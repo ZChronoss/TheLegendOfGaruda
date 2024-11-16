@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 10f;
+    public float jumpImpulse = 10f;
     // make dodgeSpeed, flySpeed (butuh apa lagi)
 
     Vector2 moveInput;
+
+    TouchingDirections touchingDirections;
 
     Rigidbody2D rb;
 
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        touchingDirections = GetComponent<TouchingDirections>();
     }
 
 
@@ -106,4 +110,23 @@ public class PlayerController : MonoBehaviour
 
         SetFacingDirection(moveInput);
     }
+
+    public void OnJump(InputAction.CallbackContext context) 
+{
+    Debug.Log("Press??");
+    if (context.started) 
+    {
+        Debug.Log("Jump key pressed");
+        if (touchingDirections.isGrounded) 
+        {
+            Debug.Log("Grounded - jumping");
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
+        }
+        else 
+        {
+            Debug.Log("Not grounded");
+        }
+    }
+}
+
 }

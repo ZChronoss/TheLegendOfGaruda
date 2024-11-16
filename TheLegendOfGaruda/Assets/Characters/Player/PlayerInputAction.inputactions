@@ -18,10 +18,10 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "48a03952-7261-4207-a525-4391a4f4ed9b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Look",
@@ -36,7 +36,7 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "1dd7ba7e-602e-4702-a40b-f8fb8eda20fa",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -269,7 +269,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "Gamepad;Keyboard&Mouse",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -293,7 +293,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "6e31357f-39be-4cb4-95e5-12448a739e95",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -302,7 +302,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "5e9a6045-2d47-4ea0-9a4d-f0598b532e97",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
