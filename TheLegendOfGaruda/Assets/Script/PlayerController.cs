@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 10f;
     public float jumpImpulse = 10f;
+    public float airSpeed = 5f;
     // make dodgeSpeed, flySpeed (butuh apa lagi)
 
     Vector2 moveInput;
@@ -20,13 +21,23 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            if (IsMoving)
+            if (IsMoving && !touchingDirections.isOnWall) 
             {
-                return walkSpeed;
+                if (touchingDirections.isGrounded)
+                {
+                    return walkSpeed;
+                }
+                else
+                {
+                    return airSpeed;
+                }
             }
-
-            // idle speed is 0
-            return 0;
+            else
+            {
+                // idle
+                return 0;
+            }
+            
         }
     }
 
@@ -112,21 +123,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnJump(InputAction.CallbackContext context) 
-{
-    Debug.Log("Press??");
-    if (context.started) 
     {
-        Debug.Log("Jump key pressed");
-        if (touchingDirections.isGrounded) 
+        if (context.started && touchingDirections.isGrounded) 
         {
-            Debug.Log("Grounded - jumping");
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
         }
-        else 
-        {
-            Debug.Log("Not grounded");
-        }
     }
-}
 
 }
