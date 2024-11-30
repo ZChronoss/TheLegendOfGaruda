@@ -12,13 +12,13 @@ public class EnemyPatrol : MonoBehaviour
     void Update()
     {
         if (patrolDestination == 0){
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[patrolDestination].position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[patrolDestination].position, moveSpeed * Time.deltaTime);
             if (Vector2.Distance(transform.position, patrolPoints[patrolDestination].position) < .2f){
                 transform.localScale = new Vector3(-5, 5, 5);
                 patrolDestination = 1;
             }
         }else if (patrolDestination == 1){
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[patrolDestination].position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[patrolDestination].position, moveSpeed * Time.deltaTime);
             if (Vector2.Distance(transform.position, patrolPoints[patrolDestination].position) < .2f){
                 transform.localScale = new Vector3(5, 5, 5);
                 patrolDestination = 0;
