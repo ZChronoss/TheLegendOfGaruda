@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChase : MonoBehaviour
+public class GroundedEnemyMovement : MonoBehaviour
 {
     public Transform player;
     public float chaseSpeed = 2f;
@@ -47,7 +47,7 @@ public class EnemyChase : MonoBehaviour
         }
 
         if (!isChasing){
-            if (!gapAhead.collider) {
+            if (!gapAhead.collider || wallAhead.collider) {
                 IsFacingRight = !IsFacingRight;
             }
         } else {
@@ -72,4 +72,8 @@ public class EnemyChase : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
+
+    // private void OnDrawGizmosSelected(){
+    //     Gizmos.DrawWireSphere(transform.position, 1f);
+    // }
 }
