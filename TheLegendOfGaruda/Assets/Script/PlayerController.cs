@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 10f;
+    public float jumpImpulse = 10f;
+    public float airSpeed = 5f;
     // make dodgeSpeed, flySpeed (butuh apa lagi)
 
     Vector2 moveInput;
+
+    TouchingDirections touchingDirections;
 
     Rigidbody2D rb;
 
@@ -17,13 +21,23 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            if (IsMoving)
+            if (IsMoving && !touchingDirections.isOnWall) 
             {
-                return walkSpeed;
+                if (touchingDirections.isGrounded)
+                {
+                    return walkSpeed;
+                }
+                else
+                {
+                    return airSpeed;
+                }
             }
-
-            // idle speed is 0
-            return 0;
+            else
+            {
+                // idle
+                return 0;
+            }
+            
         }
     }
 
@@ -67,6 +81,7 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        touchingDirections = GetComponent<TouchingDirections>();
     }
 
 
@@ -106,4 +121,13 @@ public class PlayerController : MonoBehaviour
 
         SetFacingDirection(moveInput);
     }
+
+    public void OnJump(InputAction.CallbackContext context) 
+    {
+        if (context.started && touchingDirections.isGrounded) 
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
+        }
+    }
+
 }
