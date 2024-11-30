@@ -5,7 +5,7 @@ public class EnemyShooting : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
-
+    public GroundedEnemyMovement controller;
     private float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,11 +16,13 @@ public class EnemyShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if (controller.isChasing){
+            timer += Time.deltaTime;
 
-        if(timer>2){
-            timer = 0;
-            shoot();
+            if(timer>2){
+                timer = 0;
+                shoot();
+            }
         }
     }
 
