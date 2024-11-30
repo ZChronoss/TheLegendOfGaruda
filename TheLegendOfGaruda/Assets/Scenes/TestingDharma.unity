@@ -347,8 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4dcead7107d4c71bd293ebc5d85a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  playerHealth: {fileID: 0}
+  damage: 1
+  playerHealth: {fileID: 5284772671707913639}
 --- !u!58 &1058377230
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -518,11 +518,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5284772671707913638}
-  chaseSpeed: 2
-  jumpForce: 2.5
+  chaseSpeed: 2.5
+  jumpForce: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  isChasing: 0
 --- !u!114 &1058377236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 5284616959910701335, guid: b103d381a7d233644a2e1f9e9f14e3a8, type: 3}
   bulletPos: {fileID: 1338254358}
+  controller: {fileID: 1058377235}
 --- !u!1 &1338254357
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +632,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 14
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -817,7 +819,7 @@ GameObject:
   - component: {fileID: 1897222226}
   m_Layer: 7
   m_Name: Level
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

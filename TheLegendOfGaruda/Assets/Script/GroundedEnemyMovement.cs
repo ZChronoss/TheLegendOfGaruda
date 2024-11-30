@@ -12,7 +12,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool shouldJump;
-    private bool isChasing = false;
+    public bool isChasing = false;
     private bool _isFacingRight = false;
     public bool IsFacingRight
     {
@@ -36,7 +36,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     private void Update()
     {
         // Check if grounded
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundLayer);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 2f, groundLayer);
 
         // Check for jump conditions
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(IsFacingRight ? 1 : -1, 0, 0), Vector2.down, 5f, groundLayer);
