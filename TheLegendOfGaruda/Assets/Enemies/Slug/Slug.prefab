@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 6067511686278702366}
   - component: {fileID: 5994996261535541353}
   - component: {fileID: 3698054496157345561}
-  - component: {fileID: 5699978148506125176}
   - component: {fileID: 8073436234392676664}
+  - component: {fileID: 7573513633492602334}
   m_Layer: 6
   m_Name: slugSprite
   m_TagString: Untagged
@@ -269,20 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
---- !u!114 &5699978148506125176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494781041126089759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b4dcead7107d4c71bd293ebc5d85a6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  playerHealth: {fileID: 0}
 --- !u!114 &8073436234392676664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +287,21 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  isChasing: 0
+--- !u!114 &7573513633492602334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494781041126089759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4dcead7107d4c71bd293ebc5d85a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  playerHealth: {fileID: 0}
 --- !u!1 &8102268170257186212
 GameObject:
   m_ObjectHideFlags: 0
