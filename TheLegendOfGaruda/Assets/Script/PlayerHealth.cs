@@ -7,12 +7,17 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 3;
     public int health;
 
+    private SpriteRenderer spriteRenderer;
+
     public HealthUI healthUI;
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
-        healthUI.SetMaxHeart(maxHealth);
+        ResetHealth();
+        healthUI.UpdateHearts(health);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        HealthItem.OnHealthCollect += Heal;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,12 +28,30 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    void Heal(int amount)
+    {
+        health += amount;
+
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        healthUI.UpdateHearts(health);
+    }
+
     public void takeDamage(int damage){
         health -= damage;
         healthUI.UpdateHearts(health);
 
-        if(health<=0){
+        if(health <= 0){
             Destroy(gameObject);
         }
+    }
+
+    void ResetHealth()
+    {
+        health = 1;
+        healthUI.SetMaxHeart(maxHealth);
     }
 }
