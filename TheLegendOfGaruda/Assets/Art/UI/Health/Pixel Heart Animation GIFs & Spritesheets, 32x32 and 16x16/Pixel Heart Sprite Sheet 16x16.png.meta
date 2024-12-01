@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pixel Heart Sprite Sheet 16x16_0: 1109063772672943838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

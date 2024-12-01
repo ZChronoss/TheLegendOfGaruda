@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pixel Heart Animation 16x16_0: -6487079474263220780
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
