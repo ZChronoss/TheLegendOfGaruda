@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
 
         Debug.Log("Started conversation, Loaded messages: " + messages.Length);
         // backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
+        backgroundBox.transform.localScale = Vector3.one;
         DisplayMessage();
     }
 
@@ -63,6 +64,7 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log("Conversation ended");
             // backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
+            backgroundBox.transform.localScale = Vector3.zero;
             isActive = false;
         }
     }

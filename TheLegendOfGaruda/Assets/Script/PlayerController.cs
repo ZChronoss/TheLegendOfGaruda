@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            if (IsMoving && !touchingDirections.isOnWall) 
+            if (IsMoving && !touchingDirections.isOnWall && !DialogueManager.isActive) 
             {
                 if (touchingDirections.isGrounded)
                 {

@@ -9,10 +9,10 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Message[] messages;
     public Actor[] actors;
-    private void Start()
-    {
-        StartDialogue();
-    }
+    // private void Start()
+    // {
+    //     StartDialogue();
+    // }
     public void StartDialogue() {
         FindFirstObjectByType<DialogueManager>().OpenDialogue(messages, actors);
     }
