@@ -97,7 +97,11 @@ public class FlyingEnemyMovement : MonoBehaviour
     private void Flip()
     {
         if (isChasing){
-            IsFacingRight = transform.position.x < player.position.x;
+            if(player){
+                IsFacingRight = transform.position.x < player.position.x;
+            }else{
+                isChasing = !isChasing;
+            }
         }else{
             IsFacingRight = transform.position.x < patrolTarget.x;
         }
