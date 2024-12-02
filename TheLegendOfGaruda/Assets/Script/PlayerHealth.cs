@@ -12,7 +12,9 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        healthUI.SetMaxHeart(maxHealth);
+        if(healthUI){
+            healthUI.SetMaxHeart(maxHealth);
+        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +27,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(int damage){
         health -= damage;
-        healthUI.UpdateHearts(health);
+        if (healthUI){
+            healthUI.UpdateHearts(health);
+        }
 
         if(health<=0){
             Destroy(gameObject);

@@ -42,8 +42,10 @@ public class GroundedEnemyMovement : MonoBehaviour
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(IsFacingRight ? 1 : -1, 0, 0), Vector2.down, 5f, groundLayer);
         RaycastHit2D wallAhead = Physics2D.Raycast(transform.position, IsFacingRight ? Vector2.right : Vector2.left, 1f, groundLayer);
 
-        if (Vector2.Distance(transform.position, player.position) < 3f) {
-            isChasing = true;
+        if (player){
+            if (Vector2.Distance(transform.position, player.position) < 3f) {
+                isChasing = true;
+            }
         }
 
         if (!isChasing){
@@ -51,10 +53,14 @@ public class GroundedEnemyMovement : MonoBehaviour
                 IsFacingRight = !IsFacingRight;
             }
         } else {
-            IsFacingRight = player.position.x > transform.position.x;
-            if (!gapAhead.collider || wallAhead.collider)
-            {
-                shouldJump = true;
+            if (player){
+                IsFacingRight = player.position.x > transform.position.x;
+                if (!gapAhead.collider || wallAhead.collider)
+                {
+                    shouldJump = true;
+                }
+            }else{
+                isChasing=!isChasing;
             }
         }
     }
