@@ -10,14 +10,13 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public HealthUI healthUI;
+
     // Start is called before the first frame update
     void Start()
     {
         ResetHealth();
         healthUI.UpdateHearts(health);
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        HealthItem.OnHealthCollect += Heal;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Heal(int amount)
+    public void Heal(int amount)
     {
         health += amount;
 
@@ -36,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = maxHealth;
         }
-
+         
         healthUI.UpdateHearts(health);
     }
 
