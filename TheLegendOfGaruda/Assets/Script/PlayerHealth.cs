@@ -14,14 +14,12 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthUI = FindAnyObjectByType<HealthUI>();
+        // MARK: Set current healthnya ada di function ResetHealth() 
         ResetHealth();
         healthUI.UpdateHearts(health);
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // MARK: Set current healthnya ada di function ResetHealth()
-        if(healthUI){
-            healthUI.SetMaxHeart(maxHealth);
-        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
 
     void ResetHealth()
     {
+        // TODO: Ini cuma buat test healing system, kalo udah mau release jangan lupa di max Health
         health = 1;
         healthUI.SetMaxHeart(maxHealth);
     }

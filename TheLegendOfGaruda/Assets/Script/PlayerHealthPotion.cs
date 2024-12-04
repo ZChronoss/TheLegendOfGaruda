@@ -16,6 +16,7 @@ public class PlayerHealthPotion : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        potionUI = FindAnyObjectByType<HealPotionUI>();
         ResetPotions();
         potionUI.UpdateHPotions(potions);
     }
