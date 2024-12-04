@@ -17,6 +17,11 @@ public class PlayerHealth : MonoBehaviour
         ResetHealth();
         healthUI.UpdateHearts(health);
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // MARK: Set current healthnya ada di function ResetHealth()
+        if(healthUI){
+            healthUI.SetMaxHeart(maxHealth);
+        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,7 +46,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(int damage){
         health -= damage;
-        healthUI.UpdateHearts(health);
+        if (healthUI){
+            healthUI.UpdateHearts(health);
+        }
 
         if(health <= 0){
             Destroy(gameObject);
