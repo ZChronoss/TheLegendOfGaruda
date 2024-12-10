@@ -79,6 +79,8 @@ GameObject:
   - component: {fileID: 3509917459315824717}
   - component: {fileID: 9091321640032119139}
   - component: {fileID: 6075151970020348191}
+  - component: {fileID: 3253769365532840613}
+  - component: {fileID: 273818891174533809}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -290,6 +292,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 48a03952-7261-4207-a525-4391a4f4ed9b
     m_ActionName: 'Player/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 273818891174533809}
+        m_TargetAssemblyTypeName: PlayerHealthPotion, Assembly-CSharp
+        m_MethodName: OnHeal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7f55cb43-a47d-42e6-8e8f-b4934af496bb
+    m_ActionName: 'Player/Heal[/Keyboard/leftCtrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -427,3 +445,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5fe63739caec84eae12a5ef28b069e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3253769365532840613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165170915980542636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96d3ae62cd644e4896f8bab9db28a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  health: 1
+  healthUI: {fileID: 1690973793129039435, guid: e842dcda6b7e261448b77fb17692c26b, type: 3}
+--- !u!114 &273818891174533809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165170915980542636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d02a58f5ae0b044a87f51970e7f0d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPotion: 2
+  potions: 1
+  healAmount: 1
+  potionUI: {fileID: 977381814642284788, guid: 18aa0f71ef0357b4ea87dece4388b27e, type: 3}
+  playerHealth: {fileID: 3253769365532840613}

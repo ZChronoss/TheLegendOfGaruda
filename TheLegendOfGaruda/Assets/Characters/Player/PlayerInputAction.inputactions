@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "7f55cb43-a47d-42e6-8e8f-b4934af496bb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -271,6 +280,17 @@
                     "processors": "",
                     "groups": "Gamepad;Keyboard&Mouse",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdced30e-736c-4ca2-a3e9-25700d422453",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse;Gamepad",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
