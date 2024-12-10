@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DragonEnemyAttack : MonoBehaviour
 {
-    public Transform player;
     private EnemyShooting controller;
     private float timer;
     public float dragonBreathCooldown = 10f;
