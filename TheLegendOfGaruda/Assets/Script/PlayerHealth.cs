@@ -35,4 +35,11 @@ public class PlayerHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void ResetHealth()
+    {
+        // TODO: Ini cuma buat test healing system, kalo udah mau release jangan lupa di max Health
+        health = maxHealth;
+        healthUI.SetMaxHeart(maxHealth);
+    }
 }

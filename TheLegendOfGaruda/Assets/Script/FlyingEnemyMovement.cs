@@ -5,7 +5,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     public float speed = 1f;
     public float amplitude = 1f; // Amplitude of the sine wave
     public float frequency = 1f; // Frequency of the sine wave
-    public Transform player;
+    private Transform player;
     public Transform[] patrolPoints; // Array of patrol points
     private int currentPatrolIndex = 0; // Current patrol point index
     private int patrolDirection = 1; // 1 for forward, -1 for backward
@@ -30,6 +30,7 @@ public class FlyingEnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         if (patrolPoints.Length == 0)
         {
             Debug.LogError("No patrol points assigned!");

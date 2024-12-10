@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GroundedEnemyMovement : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float chaseSpeed = 2f;
     public float jumpForce = 5f;
+    public float aggroAreaSize = 3f;
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
@@ -30,6 +31,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -43,7 +45,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         RaycastHit2D wallAhead = Physics2D.Raycast(transform.position, IsFacingRight ? Vector2.right : Vector2.left, 1f, groundLayer);
 
         if (player){
-            if (Vector2.Distance(transform.position, player.position) < 3f) {
+            if (Vector2.Distance(transform.position, player.position) < aggroAreaSize) {
                 isChasing = true;
             }
         }
