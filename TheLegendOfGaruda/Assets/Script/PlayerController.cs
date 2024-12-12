@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
 
         float dashDirection = IsFacingRight ? 1 : -1;
 
-        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);
 
         yield return new WaitForSeconds(dashDuration);
 
