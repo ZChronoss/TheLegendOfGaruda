@@ -1,25 +1,26 @@
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
-    public GroundedEnemyMovement controller;
+    private GroundedEnemyMovement controller;
     private float timer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    public bool shootingDisabled = false;
+    public float shootingCooldown = 2f;
+    
+    void Start(){
+        controller = GetComponent<GroundedEnemyMovement>();
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (controller.isChasing){
+        if (controller.isChasing && !shootingDisabled){
             timer += Time.deltaTime;
 
-            if(timer>2){
+            if(timer>shootingCooldown){
                 timer = 0;
                 shoot();
             }
