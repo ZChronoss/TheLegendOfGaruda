@@ -1,7 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
 public class PlayerController : MonoBehaviour
@@ -25,7 +30,12 @@ public class PlayerController : MonoBehaviour
     public float baseGravity = 2f;
     public float maxFallSpeed = 30f;
     public float fallSpeedMultiplier = 2f;
-    // make dodgeSpeed, flySpeed (butuh apa lagi)
+
+    [Header("Fly")]
+    public float flySpeed = 15f;
+    public float flySteer = 30f;
+    public float flyDuration = 1f;
+    bool isFlying = false;
 
     Vector2 moveInput;
 
@@ -115,8 +125,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void FixedUpdate()
     {
-        // Biar ga bisa jalan pas lg dashing
+        if (isFlying) {
+            return;
+        }
         Gravity();
+        // Biar ga bisa jalan pas lg dashing
         if (isDashing)
         {
             return;
@@ -180,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && canDash)
+        if (context.started && canDash)
         {
             StartCoroutine(DashCoroutine());
         }
@@ -195,6 +208,11 @@ public class PlayerController : MonoBehaviour
 
         float dashDirection = IsFacingRight ? 1 : -1;
 
+        if (isFlying)
+        {
+            isFlying = false;
+        }
+
         rb.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);
 
         yield return new WaitForSeconds(dashDuration);
@@ -206,5 +224,47 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    public void OnFly(InputAction.CallbackContext context) {
+        if (!touchingDirections.isGrounded && context.performed && !isFlying) {
+            StartCoroutine(FlyCoroutine());
+        }
+    }
+
+    private IEnumerator FlyCoroutine()
+    {
+        isFlying = true;
+        rb.gravityScale = 0;
+
+        float elapsedTime = 0;
+        Vector2 velocity = new Vector2((IsFacingRight ? 1 : -1) * flySpeed, 0f); // Initialize with current velocity
+
+        while (elapsedTime < flyDuration)
+        {
+            if (!isFlying)
+            {
+                break;
+            }
+
+            if (moveInput != Vector2.zero)
+            {
+                // Normalize the input to get a direction
+                Vector2 desiredDirection = moveInput.normalized;
+
+                // Smoothly interpolate velocity towards the desired direction
+                velocity = Vector2.Lerp(velocity, desiredDirection * flySpeed, Time.deltaTime * flySteer);
+                // Update the rigidbody velocity
+            }
+            rb.linearVelocity = velocity;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // End of flight
+        rb.gravityScale = baseGravity;
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y); // Retain vertical velocity for falling
+        isFlying = false;
     }
 }
