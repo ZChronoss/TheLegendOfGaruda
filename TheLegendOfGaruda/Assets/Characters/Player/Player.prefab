@@ -327,6 +327,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: dae9c540-36e6-4856-95b0-0767d15a360b
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1966844307350680590}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnFly
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a49ad7d0-1719-4be6-a61a-1d7d41ed902a
+    m_ActionName: 'Player/Fly[/Keyboard/x]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -353,6 +369,9 @@ MonoBehaviour:
   baseGravity: 2
   maxFallSpeed: 30
   fallSpeedMultiplier: 2
+  flySpeed: 15
+  flySteer: 30
+  flyDuration: 1
   _isMoving: 0
   _isFacingRight: 1
 --- !u!70 &5048327313561636125
