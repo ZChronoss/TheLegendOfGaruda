@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     public float jumpImpulse = 15f;
     public float airSpeed;
+    bool isJumping = false;
 
     [Header("Dash")]
     public float dashSpeed = 50f;
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Gravity")]
     public float baseGravity = 2f;
-    public float maxFallSpeed = 30f;
+    public float maxFallSpeed = 50f;
     public float fallSpeedMultiplier = 2f;
 
     [Header("Fly")]
@@ -113,7 +114,10 @@ public class PlayerController : MonoBehaviour
         airSpeed = walkSpeed;
     }
 
-
+    private void Update()
+    {
+        
+    }
     /// <summary>
     /// UPDATE VS FIXED UPDATE
     /// 
@@ -182,9 +186,10 @@ public class PlayerController : MonoBehaviour
         // kalo pencet ditahan bakal max jump height
         if (context.performed && touchingDirections.isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
+            rb.AddForce(Vector2.up * jumpImpulse, ForceMode2D.Impulse);
+            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
         }
-        else if (context.canceled)
+        else if (context.canceled && Vector2.Dot(rb.linearVelocity, Vector2.up) > 0)
         {
             // kalo light tap bakal setengahnya
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
