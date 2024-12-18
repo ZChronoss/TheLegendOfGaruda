@@ -21,10 +21,11 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private void Attack(){
+        print("terjalan! attack");
         hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
-
+        print(hits.Length);
         for (int i = 0; i < hits.Length; i++){
-            EnemyHealth enemyHeatlh = hits[i].collider.gameObject.GetComponent<EnemyHealth>();
+            IDamageable enemyHeatlh = hits[i].collider.gameObject.GetComponent<IDamageable>();
 
             if (enemyHeatlh != null){
                 IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();

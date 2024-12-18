@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  playerHealth: {fileID: 0}
 --- !u!114 &4165437107734867436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
   jumpForce: 2
+  aggroAreaSize: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -279,14 +279,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2314734913327010431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7055bbe881ff23a4fb23440ee90e1f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5284616959910701335, guid: b103d381a7d233644a2e1f9e9f14e3a8, type: 3}
   bulletPos: {fileID: 4915738121382759249}
-  controller: {fileID: 289808229181603385}
+  shootingDisabled: 0
   shootingCooldown: 2
 --- !u!1 &3141089600531905636
 GameObject:

@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Enemy
+  - Barrier
+  - Orb
+  - SnakeBoss
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -14,8 +19,8 @@ TagManager:
   - UI
   - Enemy
   - Ground
-  - 
-  - 
+  - Player
+  - Projectile
   - 
   - 
   - 
