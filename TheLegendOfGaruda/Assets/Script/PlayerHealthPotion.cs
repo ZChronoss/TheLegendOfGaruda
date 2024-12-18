@@ -29,7 +29,7 @@ public class PlayerHealthPotion : MonoBehaviour
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && playerHealth.health < playerHealth.maxHealth)
         {
             if (potions > 0)
             {
