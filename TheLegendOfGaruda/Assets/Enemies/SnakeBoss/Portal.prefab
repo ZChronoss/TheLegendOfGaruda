@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -338474371
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 185d6886fe530474a91ed3e9d9f15d1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -134,8 +134,10 @@ MonoBehaviour:
   damage: 1
   speed: 15
   ableToMove: 1
-  rotateSpeed: 750
-  distanceBetween: 0.02
+  maxHealth: 200
+  health: 0
+  rotateSpeed: 250
+  distanceBetween: 0.05
   bodyParts:
   - {fileID: 2558132911217365869, guid: 7748550bed70b9d438e9c785f3e3cb1a, type: 3}
   - {fileID: 6075788609438092312, guid: d4b20acb0553aed479218491ba6c2994, type: 3}
@@ -258,8 +260,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -338474371
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a27bc0c7df12cca47a38d7acaf2b695b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
