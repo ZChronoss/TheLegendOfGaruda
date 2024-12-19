@@ -8,13 +8,20 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private float currentHealth;
     public delegate void EntityDeathHandler(EnemyHealth enemy);
     public event EntityDeathHandler OnEntityDeath;
-    private void Start() {
+    private HitFlash HitFlash;
+    private void Awake()
+    {
         currentHealth = maxHealth;
+        HitFlash = GetComponent<HitFlash>();
+        if(HitFlash == null){
+            HitFlash = gameObject.AddComponent<HitFlash>();
+        }
     }
-
 
     public void Damage(float damageAmount)
     {
+        HitFlash.TriggerFlash(0.05f);
+        FindAnyObjectByType<HitStop>().Stop(0.05f);
         currentHealth -= damageAmount;
 
         if (currentHealth <= 0){

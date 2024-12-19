@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SnakeManager : MonoBehaviour, IStunnable
 {
-    [SerializeField] int damage = 1;
     public float speed = 5f;
     public bool ableToMove = true;
     public float maxHealth = 200f;
