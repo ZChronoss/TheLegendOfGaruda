@@ -173,7 +173,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 6.7067914
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 2
@@ -184,7 +184,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -362,14 +362,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 10
   jumpImpulse: 15
-  airSpeed: 0
+  airSpeed: 10
   dashSpeed: 50
   dashDuration: 0.1
   dashCooldown: 0.1
   baseGravity: 2
-  maxFallSpeed: 30
+  maxFallSpeed: 50
   fallSpeedMultiplier: 2
-  flySpeed: 30
+  flySpeed: 15
   flySteer: 30
   flyDuration: 1
   _isMoving: 0
@@ -408,8 +408,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.009013653, y: -0.14237928}
-  m_Size: {x: 2.3009524, y: 3.408578}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.3964643, y: 3.9272625}
   m_Direction: 0
 --- !u!114 &3509917459315824717
 MonoBehaviour:
@@ -475,7 +475,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.057992935, y: -0.012887001}
+  m_Offset: {x: 0, y: 0}
   m_Radius: 1.9291196
 --- !u!114 &6075151970020348191
 MonoBehaviour:

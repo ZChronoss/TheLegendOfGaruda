@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
@@ -16,7 +15,14 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump")]
     public float jumpImpulse = 15f;
-    public float airSpeed;
+    public float airSpeed = 10f;
+    // MARK: Coyote Jump
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+    // MARK: Jump Buffer
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
+    bool hasPressedJumpButton = false;
 
     [Header("Dash")]
     public float dashSpeed = 50f;
@@ -28,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Gravity")]
     public float baseGravity = 2f;
-    public float maxFallSpeed = 30f;
+    public float maxFallSpeed = 50f;
     public float fallSpeedMultiplier = 2f;
 
     [Header("Fly")]
@@ -43,16 +49,24 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
+
     public float CurrentMoveSpeed
     {
         get
         {
-            if (IsMoving && !touchingDirections.isOnWall && !DialogueManager.isActive) 
+            if (IsMoving && !DialogueManager.isActive) 
             {
                 if (touchingDirections.isGrounded)
                 {
                     return walkSpeed;
                 }
+                //ini gw kasih else if gegara kalo taro di atas bakal bikin character stop abis air time
+                // GATAU MASIH BUTUH APA KAGA KARENA UDAH GW KASIH FRICTIONLESS DI RIGIDBODY
+                //else if (touchingDirections.isOnWall)
+                //{
+                //    // If airborne and touching a wall, allow wall behavior
+                //    return 0;
+                //}
                 else
                 {
                     return airSpeed;
@@ -109,11 +123,24 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         trailRenderer = GetComponent<TrailRenderer>();
-
-        airSpeed = walkSpeed;
     }
 
-
+    private void Update()
+    {
+        // ini kalo loncat tp ga nyentuh tanah < 0.2 second bisa loncat
+        if (touchingDirections.isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+        
+        if (!hasPressedJumpButton)
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+    }
     /// <summary>
     /// UPDATE VS FIXED UPDATE
     /// 
@@ -179,15 +206,25 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context) 
     {
+        if (context.started)
+        {
+            hasPressedJumpButton = true;
+            jumpBufferCounter = jumpBufferTime;
+        }
         // kalo pencet ditahan bakal max jump height
-        if (context.performed && touchingDirections.isGrounded)
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
+            jumpBufferCounter = 0f;
+            hasPressedJumpButton = false;
         }
-        else if (context.canceled)
+        else if (context.canceled && Vector2.Dot(rb.linearVelocity, Vector2.up) > 0)
         {
             // kalo light tap bakal setengahnya
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+
+            coyoteTimeCounter = 0f;
+            hasPressedJumpButton = false;
         }
     }
 
