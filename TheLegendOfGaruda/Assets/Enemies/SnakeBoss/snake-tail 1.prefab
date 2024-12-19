@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4520832370857862453}
   - component: {fileID: 3185843300442692852}
   - component: {fileID: 104889013222711540}
+  - component: {fileID: -458264690438011929}
   m_Layer: 6
   m_Name: snake-tail 1
   m_TagString: Enemy
@@ -200,5 +201,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8952fcffde455747b5fae9b92897c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-458264690438011929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550883760448713372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb49ad48e7669c044b366259c318a750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

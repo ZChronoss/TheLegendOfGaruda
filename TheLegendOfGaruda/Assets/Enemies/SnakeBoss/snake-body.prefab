@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7355502836350649899}
   - component: {fileID: -1154405284151534124}
   - component: {fileID: -6018373744621807674}
+  - component: {fileID: 2298676929519470870}
   m_Layer: 6
   m_Name: snake-body
   m_TagString: Enemy
@@ -200,5 +201,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8952fcffde455747b5fae9b92897c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2298676929519470870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075788609438092312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb49ad48e7669c044b366259c318a750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

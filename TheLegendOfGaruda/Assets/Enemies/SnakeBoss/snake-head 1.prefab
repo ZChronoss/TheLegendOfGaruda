@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3655730030652174028}
   - component: {fileID: -1049840060261866430}
   - component: {fileID: 4576319620087127031}
+  - component: {fileID: 361968853944721785}
   m_Layer: 6
   m_Name: snake-head 1
   m_TagString: Enemy
@@ -194,3 +195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+--- !u!114 &361968853944721785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558132911217365869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb49ad48e7669c044b366259c318a750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
