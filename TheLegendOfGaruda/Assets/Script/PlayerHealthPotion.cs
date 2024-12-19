@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,11 +8,16 @@ public class PlayerHealthPotion : MonoBehaviour
     public int potions;
 
     public int healAmount = 1;
+    public float healTime = 0.8f;
 
     private SpriteRenderer spriteRenderer;
 
     public HealPotionUI potionUI;
     public PlayerHealth playerHealth;
+
+    private Rigidbody2D rb;
+
+    [SerializeField] private InputActionAsset input;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +25,11 @@ public class PlayerHealthPotion : MonoBehaviour
         potionUI = FindAnyObjectByType<HealPotionUI>();
         ResetPotions();
         potionUI.UpdateHPotions(potions);
+    }
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void ResetPotions()
@@ -33,10 +44,21 @@ public class PlayerHealthPotion : MonoBehaviour
         {
             if (potions > 0)
             {
-                potions--;
-                playerHealth.Heal(healAmount);
-                potionUI.UpdateHPotions(potions);
+                StartCoroutine(HealCoroutine());
             }
         }
+    }
+
+    private IEnumerator HealCoroutine()
+    {
+        input.Disable();
+
+        yield return new WaitForSeconds(healTime);
+
+        potions--;
+        playerHealth.Heal(healAmount);
+        potionUI.UpdateHPotions(potions);
+
+        input.Enable();
     }
 }

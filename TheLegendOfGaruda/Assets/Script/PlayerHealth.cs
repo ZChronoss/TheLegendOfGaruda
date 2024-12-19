@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
         healthUI = FindAnyObjectByType<HealthUI>();
         // MARK: Set current healthnya ada di function ResetHealth() 
         ResetHealth();
-        // healthUI.UpdateHearts(health);
+        healthUI.UpdateHearts(health);
         spriteRenderer = GetComponent<SpriteRenderer>();
         HitFlash = GetComponent<HitFlash>();
         if(HitFlash == null){
@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
     void ResetHealth()
     {
         // TODO: Ini cuma buat test healing system, kalo udah mau release jangan lupa di max Health
-        health = maxHealth;
-        // healthUI.SetMaxHeart(maxHealth);
+        health = 1;
+        healthUI.SetMaxHeart(maxHealth);
     }
 }
