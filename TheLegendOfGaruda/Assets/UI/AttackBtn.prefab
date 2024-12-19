@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 98527276333564732}
   - component: {fileID: 4507077264799849925}
   - component: {fileID: 9141463345571228158}
+  - component: {fileID: 5503265216405232016}
   m_Layer: 5
   m_Name: AttackBtn
   m_TagString: Untagged
@@ -75,3 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5503265216405232016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456362034709981039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4f3f9dbbaed41de8a8dbf802581e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 9141463345571228158}
+  idle: {fileID: 21300000, guid: 9853dfd1ccb5177489282e02fe811300, type: 3}
+  pressed: {fileID: 21300000, guid: 3fd72911a66bf9f49bb028056191abb5, type: 3}
