@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 10f;
 
     [Header("Jump")]
-    public float jumpImpulse = 15f;
+    public float jumpImpulse = 16f;
     public float airSpeed = 10f;
     // MARK: Coyote Jump
     private float coyoteTime = 0.2f;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     public float flySteer = 30f;
     public float flyDuration = 1f;
     bool isFlying = false;
+    bool canFly = true;
 
     Vector2 moveInput;
 
@@ -260,17 +262,23 @@ public class PlayerController : MonoBehaviour
         trailRenderer.emitting = false;
 
         yield return new WaitForSeconds(dashCooldown);
+        yield return new WaitUntil(isGrounded);
         canDash = true;
     }
 
+    bool isGrounded(){
+        return touchingDirections.isGrounded;
+    }
+
     public void OnFly(InputAction.CallbackContext context) {
-        if (!touchingDirections.isGrounded && context.performed && !isFlying) {
+        if (!touchingDirections.isGrounded && context.performed && canFly) {
             StartCoroutine(FlyCoroutine());
         }
     }
 
     private IEnumerator FlyCoroutine()
     {
+        canFly = false;
         isFlying = true;
         rb.gravityScale = 0;
 
@@ -303,5 +311,8 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = baseGravity;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y); // Retain vertical velocity for falling
         isFlying = false;
+
+        yield return new WaitUntil(isGrounded);
+        canFly = true;
     }
 }
