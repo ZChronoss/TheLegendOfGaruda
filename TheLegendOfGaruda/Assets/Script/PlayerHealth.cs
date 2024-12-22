@@ -68,7 +68,9 @@ public class PlayerHealth : MonoBehaviour
     void ResetHealth()
     {
         // TODO: Ini cuma buat test healing system, kalo udah mau release jangan lupa di max Health
-        health = 1;
-        healthUI.SetMaxHeart(maxHealth);
+        health = maxHealth;
+        if(healthUI){
+            healthUI.SetMaxHeart(maxHealth);
+        }
     }
 }
