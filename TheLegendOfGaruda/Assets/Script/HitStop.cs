@@ -7,7 +7,7 @@ public class HitStop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Stop(float duration){
         if (waiting) return;
-        Time.timeScale = 0.0f;
+        Time.timeScale = 0.1f;
         StartCoroutine(Wait(duration));
     }
 

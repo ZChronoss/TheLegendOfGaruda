@@ -26,7 +26,7 @@ public class SnakeHead : MonoBehaviour, IDamageable
 
     public void Damage(float damage){
         HitFlash.TriggerFlash(0.05f);
-        FindAnyObjectByType<HitStop>().Stop(0.05f);
+        FindAnyObjectByType<HitStop>().Stop(0.03f);
         transform.GetComponentInParent<SnakeManager>().health -= damage*10;
         if (transform.GetComponentInParent<SnakeManager>().health <= 0){
             Destroy(transform.parent.gameObject);

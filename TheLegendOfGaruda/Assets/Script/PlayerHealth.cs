@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
     public void takeDamage(int damage){
         if(!isInvincible){
             HitFlash.TriggerFlash(0.1f);
-            FindAnyObjectByType<HitStop>().Stop(0.15f);
+            FindAnyObjectByType<HitStop>().Stop(0.05f);
             health -= damage;
             if (healthUI){
                 healthUI.UpdateHearts(health);
