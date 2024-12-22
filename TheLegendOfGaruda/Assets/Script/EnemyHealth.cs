@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void Damage(float damageAmount)
     {
         HitFlash.TriggerFlash(0.05f);
-        FindAnyObjectByType<HitStop>().Stop(0.05f);
+        FindAnyObjectByType<HitStop>().Stop(0.03f);
         currentHealth -= damageAmount;
 
         if (currentHealth <= 0){
