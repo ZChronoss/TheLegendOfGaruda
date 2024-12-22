@@ -14,11 +14,7 @@ public class SnakeSegments : MonoBehaviour, IDamageable
 
     public void Damage(float damage){
         HitFlash.TriggerFlash(0.05f);
-<<<<<<< HEAD
         FindAnyObjectByType<HitStop>().Stop(0.03f);
-=======
-        FindAnyObjectByType<HitStop>().Stop(0.05f);
->>>>>>> main
         transform.GetComponentInParent<SnakeManager>().health -= damage;
         if (transform.GetComponentInParent<SnakeManager>().health <= 0){
             Destroy(transform.parent.gameObject);
