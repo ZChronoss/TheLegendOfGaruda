@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cdd0d4f802250424880be214d3fb4b39
+guid: 1ffdad6eed533ad4fb948276118cae3a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5275429406482481447
-    second: Steak_0
+      213: 7562008104690276591
+    second: Barrier 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Steak_0
+      name: Barrier 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 756
+        height: 702
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 721c9034817163940800000000000000
-      internalID: 5275429406482481447
+      spriteID: fe850b45e46a1f860800000000000000
+      internalID: 7562008104690276591
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Steak_0: 5275429406482481447
+      Barrier 1_0: 7562008104690276591
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

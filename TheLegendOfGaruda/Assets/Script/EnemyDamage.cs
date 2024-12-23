@@ -5,7 +5,10 @@ using UnityEngine;
 public class MonsterDamage : MonoBehaviour
 {
     public int damage = 1;
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
+    public void Start(){
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Player"){

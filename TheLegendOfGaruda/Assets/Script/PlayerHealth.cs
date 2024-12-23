@@ -6,33 +6,71 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 3;
     public int health;
-
+    public float invincibilityDuration = 1.5f;
+    private float invincibilityDeltaTime = 0.4f;
+    private SpriteRenderer spriteRenderer;
     public HealthUI healthUI;
-    // Start is called before the first frame update
-    void Start()
+    private HitFlash HitFlash;
+    private bool isInvincible = false;
+
+    void Awake()
     {
-        health = maxHealth;
-        if(healthUI){
-            healthUI.SetMaxHeart(maxHealth);
-        } 
+        healthUI = FindAnyObjectByType<HealthUI>();
+        // MARK: Set current healthnya ada di function ResetHealth() 
+        ResetHealth();
+        // healthUI.UpdateHearts(health);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        HitFlash = GetComponent<HitFlash>();
+        if(HitFlash == null){
+            HitFlash = gameObject.AddComponent<HitFlash>();
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Heal(int amount)
     {
-        if(collision.gameObject.tag == "Enemy")
+        health += amount;
+
+        if(health > maxHealth)
         {
-            takeDamage(1);
+            health = maxHealth;
         }
+         
+        healthUI.UpdateHearts(health);
     }
 
     public void takeDamage(int damage){
-        health -= damage;
-        if (healthUI){
-            healthUI.UpdateHearts(health);
+        if(!isInvincible){
+            HitFlash.TriggerFlash(0.1f);
+            FindAnyObjectByType<HitStop>().Stop(0.05f);
+            health -= damage;
+            if (healthUI){
+                healthUI.UpdateHearts(health);
+            }
+            if(health <= 0){
+                Destroy(gameObject);
+            }
+            StartCoroutine(BecomeTemporarilyInvincible(invincibilityDuration));
         }
+    }
 
-        if(health<=0){
-            Destroy(gameObject);
+    private IEnumerator BecomeTemporarilyInvincible(float invincibilityDuration)
+    {
+        isInvincible = true;
+
+        for (float i = 0; i < invincibilityDuration; i += invincibilityDeltaTime)
+        {
+            HitFlash.TriggerFlash(0.2f);
+            yield return new WaitForSeconds(invincibilityDeltaTime);
+        }
+        isInvincible = false;
+    }
+
+    void ResetHealth()
+    {
+        // TODO: Ini cuma buat test healing system, kalo udah mau release jangan lupa di max Health
+        health = maxHealth;
+        if(healthUI){
+            healthUI.SetMaxHeart(maxHealth);
         }
     }
 }

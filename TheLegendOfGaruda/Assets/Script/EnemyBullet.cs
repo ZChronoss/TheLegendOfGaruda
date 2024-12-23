@@ -7,7 +7,9 @@ public class EnemyBullet : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     public float speed;
+    public float accuracy = 0f;
     private float timer;
+    public float bulletExpireTime = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,9 +17,14 @@ public class EnemyBullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         Vector3 direction = player.transform.position - transform.position;
-        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
-
-        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        float angleOffset = UnityEngine.Random.Range(-accuracy, accuracy);
+        float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
+        Vector2 inaccurateDirection = new Vector2(
+            Mathf.Cos(rot * Mathf.Deg2Rad),
+            Mathf.Sin(rot * Mathf.Deg2Rad)
+        );
+        
+        rb.linearVelocity = inaccurateDirection.normalized * speed;
         transform.rotation = Quaternion.Euler(0, 0, rot);
     }
 
@@ -26,12 +33,12 @@ public class EnemyBullet : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer>5){
+        if(timer>bulletExpireTime){
             Destroy(gameObject);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    void OnCollisionEnter2D(Collision2D other){
         if (other.gameObject.CompareTag("Player")){
             other.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
             Destroy(gameObject);

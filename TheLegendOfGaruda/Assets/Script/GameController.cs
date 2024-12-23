@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     int coinAmount;
     public TMP_Text coinText;
