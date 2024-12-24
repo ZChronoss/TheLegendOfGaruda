@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 18705749}
   - component: {fileID: 18705748}
   - component: {fileID: 18705752}
+  - component: {fileID: 18705753}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -238,14 +239,25 @@ MonoBehaviour:
   storyText: {fileID: 562704681}
   blackPanel: {fileID: 1327269880}
   storyLines:
-  - Long ago, the skies were free, and the earth was peaceful... until Kadru, the
-    Queen of the Snakes, cast her shadow over the land.
-  - Vinata, guardian of life and my beloved mother, was enslaved by her cruel venom.
-    Her freedom was stolen... but not forever.
-  - I am Garuda, born with wings of the divine and the fire of vengeance in my soul.
-    This is my journey to break her chains... no matter the cost.
+  - Di dunia yang terlupakan, hiduplah seorang makhluk bernama Garuda
+  - Ingatannya tentang siapa dirinya telah menghilang, meninggalkan kekosongan yang
+    terus menghantuinya
+  - Dia hidup sebagai pelindung, namun ada sesuatu yang hilang dalam dirinya
+  - Sesuatu yang lebih penting dari sekadar kenangan
   textSpeed: 2
   linePause: 3
+--- !u!114 &18705753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18705747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc73afa1c7234edf8c465e3e7c37147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   nextSceneName: TutorialScene
 --- !u!1 &562704680
 GameObject:

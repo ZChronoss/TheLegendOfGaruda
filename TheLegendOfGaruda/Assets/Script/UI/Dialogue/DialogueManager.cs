@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -71,12 +72,18 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        // backgroundBox.transform.localScale = Vector3.zero;
+        backgroundBox.transform.localScale = Vector3.zero;
+        Debug.Log(isActive);
     }
 
 
     void Update()
     {
+        // Kasus dimana kalo user buka dialogue llu lsg tutup game
+        if (currentMessages == null)
+        {
+            isActive = false;
+        }
         //MouseButton for testing
         if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && isActive)
         {

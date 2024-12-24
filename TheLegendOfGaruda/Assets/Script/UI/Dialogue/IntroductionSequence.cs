@@ -1,7 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class IntroSequence : MonoBehaviour
@@ -11,7 +9,6 @@ public class IntroSequence : MonoBehaviour
     public string[] storyLines;
     public float textSpeed = 2f;
     public float linePause = 2f;
-    public string nextSceneName;
 
     private void Start()
     {
@@ -34,7 +31,11 @@ public class IntroSequence : MonoBehaviour
         }
 
         // Transition to the game scene
-        StartCoroutine(TransitionToGameScene());
+        SceneManagerScript sceneManager = FindFirstObjectByType<SceneManagerScript>();
+        if (sceneManager != null)
+        {
+            sceneManager.changeScene();
+        }
     }
 
     private IEnumerator FadeTextIn(TextMeshProUGUI text)
@@ -64,22 +65,5 @@ public class IntroSequence : MonoBehaviour
             text.color = color;
             yield return null;
         }
-    }
-
-    private IEnumerator TransitionToGameScene()
-    {
-        // Optionally fade out the black panel
-        Image panelImage = blackPanel.GetComponent<Image>();
-        Color panelColor = panelImage.color;
-
-        while (panelColor.a > 0)
-        {
-            panelColor.a -= Time.deltaTime / textSpeed;
-            panelImage.color = panelColor;
-            yield return null;
-        }
-
-        // Load the next scene
-        SceneManager.LoadScene(nextSceneName);
     }
 }
