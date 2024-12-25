@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5320491504720713460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol point 2
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -494,6 +494,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  lootTable:
+  - itemPrefab: {fileID: 4341121462236174520, guid: 53d5874057fe4cf4d9f72c89398ae171, type: 3}
+    dropChance: 50
 --- !u!114 &8073436234392676664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,12 +509,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1937c8ebb04462a921e00c814371e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 2.5
-  jumpForce: 2
+  chaseSpeed: 2
+  jumpForce: 5
   aggroAreaSize: 3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   isChasing: 0
 --- !u!114 &7573513633492602334
 MonoBehaviour:
@@ -535,7 +538,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2385554831890017264}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol point 1
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -566,9 +569,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117812269404459683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slug
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
