@@ -492,7 +492,7 @@ MonoBehaviour:
   attackRange: 1.5
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   damageAmount: 1
 --- !u!96 &7144841703007008552
 TrailRenderer:
