@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.Playables;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -11,9 +12,9 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
 
-    Message[] currentMessages;
-    Actor[] currentActors;
-    int activeMessage = 0;
+    private Message[] currentMessages;
+    private Actor[] currentActors;
+    private int activeMessage = 0;
     public static bool isActive = false;
 
     public float typingSpeed = 0.05f;
@@ -26,7 +27,6 @@ public class DialogueManager : MonoBehaviour
         isActive = true;
 
         Debug.Log("Started conversation, Loaded messages: " + messages.Length);
-        // backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
         backgroundBox.transform.localScale = Vector3.one;
         DisplayMessage();
     }
@@ -35,6 +35,18 @@ public class DialogueManager : MonoBehaviour
     {
         Message messageToDisplay = currentMessages[activeMessage];
 
+        // If the message has an associated timeline, play it and wait for completion
+        if (messageToDisplay.timeline != null)
+        {
+            Debug.Log("Playing timeline for message...");
+            messageToDisplay.timeline.Play();
+            StartCoroutine(WaitForTimelineToFinish(messageToDisplay));
+            backgroundBox.transform.localScale = Vector3.zero;
+            return; // Do not display the message until the timeline is complete
+        }
+        backgroundBox.transform.localScale = Vector3.one;
+
+        // Display actor and message
         Actor actorToDisplay = currentActors[messageToDisplay.actorId];
         actorName.text = actorToDisplay.name;
         actorImage.sprite = actorToDisplay.sprite;
@@ -44,7 +56,21 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeLine(messageToDisplay.message));
     }
 
-    IEnumerator TypeLine(string message)
+    private IEnumerator WaitForTimelineToFinish(Message message)
+    {
+        while (message.timeline.state == PlayState.Playing)
+        {
+            yield return null; // Wait until the timeline finishes
+        }
+
+        Debug.Log("Timeline finished.");
+
+        message.timeline = null;
+        
+        NextMessage();
+    }
+
+    private IEnumerator TypeLine(string message)
     {
         messageText.text = ""; // Clear the text
         foreach (char letter in message.ToCharArray())
@@ -64,7 +90,6 @@ public class DialogueManager : MonoBehaviour
         else
         {
             Debug.Log("Conversation ended");
-            // backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             backgroundBox.transform.localScale = Vector3.zero;
             isActive = false;
         }
@@ -73,18 +98,16 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         backgroundBox.transform.localScale = Vector3.zero;
-        Debug.Log(isActive);
     }
-
 
     void Update()
     {
-        // Kasus dimana kalo user buka dialogue llu lsg tutup game
+        // Check if dialogue is active and handle input
         if (currentMessages == null)
         {
             isActive = false;
         }
-        //MouseButton for testing
+
         if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && isActive)
         {
             if (messageText.text == currentMessages[activeMessage].message)
