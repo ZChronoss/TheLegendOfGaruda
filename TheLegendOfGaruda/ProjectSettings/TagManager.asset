@@ -10,6 +10,8 @@ TagManager:
   - Orb
   - SnakeBoss
   - Projectile
+  - Spike
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Ground
   - Player
   - Projectile
-  - 
+  - Decorations
   - 
   - 
   - 
