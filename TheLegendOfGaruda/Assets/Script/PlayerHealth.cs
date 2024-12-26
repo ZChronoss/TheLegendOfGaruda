@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private IEnumerator BecomeTemporarilyInvincible(float invincibilityDuration)
+    public IEnumerator BecomeTemporarilyInvincible(float invincibilityDuration)
     {
         isInvincible = true;
 
