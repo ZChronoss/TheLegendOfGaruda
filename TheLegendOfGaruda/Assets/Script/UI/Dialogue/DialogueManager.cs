@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     private Actor[] currentActors;
     private int activeMessage = 0;
     public static bool isActive = false;
+    private bool isTimelinePlaying = false;
 
     public float typingSpeed = 0.05f;
 
@@ -39,6 +40,7 @@ public class DialogueManager : MonoBehaviour
         if (messageToDisplay.timeline != null)
         {
             Debug.Log("Playing timeline for message...");
+            isTimelinePlaying = true;
             messageToDisplay.timeline.Play();
             StartCoroutine(WaitForTimelineToFinish(messageToDisplay));
             backgroundBox.transform.localScale = Vector3.zero;
@@ -64,7 +66,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         Debug.Log("Timeline finished.");
-
+        isTimelinePlaying = false;
         message.timeline = null;
         
         NextMessage();
@@ -108,7 +110,7 @@ public class DialogueManager : MonoBehaviour
             isActive = false;
         }
 
-        if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && isActive)
+        if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && isActive && !isTimelinePlaying)
         {
             if (messageText.text == currentMessages[activeMessage].message)
             {
