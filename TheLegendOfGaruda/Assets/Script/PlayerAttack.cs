@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.ShortcutManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -13,25 +10,26 @@ public class PlayerAttack : MonoBehaviour
     private RaycastHit2D[] hits;
 
     // Update is called once per frame
-    void Update()
-    {
-        if (UserInput.instance.controls.Attack.Attack.WasPressedThisFrame()){
-            Attack();
-        }
-    }
+    // void Update()
+    // {
+    //     if (UserInput.instance.controls.Attack.Attack.WasPressedThisFrame()){
+    //         Attack();
+    //     }
+    // }
 
-    private void Attack(){
-        print("terjalan! attack");
-        hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
-        print(hits.Length);
-        for (int i = 0; i < hits.Length; i++){
-            IDamageable enemyHeatlh = hits[i].collider.gameObject.GetComponent<IDamageable>();
+    public void OnAttack(InputAction.CallbackContext context){
+        if(context.started){    
+            hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
+            print(hits.Length);
+            for (int i = 0; i < hits.Length; i++){
+                IDamageable enemyHeatlh = hits[i].collider.gameObject.GetComponent<IDamageable>();
 
-            if (enemyHeatlh != null){
-                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+                if (enemyHeatlh != null){
+                    IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
 
-                if (iDamageable != null){
-                    iDamageable.Damage(damageAmount);
+                    if (iDamageable != null){
+                        iDamageable.Damage(damageAmount);
+                    }
                 }
             }
         }

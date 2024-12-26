@@ -9,6 +9,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public delegate void EntityDeathHandler(EnemyHealth enemy);
     public event EntityDeathHandler OnEntityDeath;
     private HitFlash HitFlash;
+
+    [Header("Loot")]
+    public List<LootItem> lootTable = new List<LootItem>();
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -30,7 +34,23 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
 
     public void Die(){
+        foreach (LootItem item in lootTable)
+        {
+            if (Random.Range(0f, 100f) <= item.dropChance)
+            {
+                InstantiateLoot(item.itemPrefab);
+            }
+        }
+
         OnEntityDeath?.Invoke(this);
         Destroy(gameObject);
+    }
+
+    void InstantiateLoot(GameObject loot)
+    {
+        if (loot)
+        {
+            GameObject droppedLoot = Instantiate(loot, transform.position, Quaternion.identity);
+        }
     }
 }
