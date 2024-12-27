@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,26 +22,45 @@ public class PlayerAttack : MonoBehaviour
     private bool isDashing = false;
     private bool canDash = true;
 
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     if (UserInput.instance.controls.Attack.Attack.WasPressedThisFrame()){
-    //         Attack();
-    //     }
-    // }
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+        playerHealth = GetComponent<PlayerHealth>();
+    }
 
     public void OnAttack(InputAction.CallbackContext context){
-        if(context.started){    
-            hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
-            print(hits.Length);
-            for (int i = 0; i < hits.Length; i++){
-                IDamageable enemyHeatlh = hits[i].collider.gameObject.GetComponent<IDamageable>();
+        if(context.started){
+            if (playerController.isFlying)
+            {
+                targetEnemy = FindNearestEnemy();
+                print(targetEnemy);
 
-                if (enemyHeatlh != null){
-                    IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+                if (targetEnemy != null)
+                {
+                    RaycastHit2D hit = Physics2D.Linecast(transform.position, targetEnemy.position, LayerMask.GetMask("Ground"));
+                    if (hit.collider == null)
+                    {
+                        StartCoroutine(DashCoroutine(targetEnemy));
+                        StartCoroutine(playerHealth.BecomeTemporarilyInvincible(2f));
+                    }
+                }
+            }
+            else
+            {
+                hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
+                for (int i = 0; i < hits.Length; i++){
+                    RaycastHit2D hit = Physics2D.Linecast(transform.position, hits[i].transform.position, LayerMask.GetMask("Ground"));
+                    if (hit.collider == null)
+                    {
+                        IDamageable enemyHeatlh = hits[i].collider.gameObject.GetComponent<IDamageable>();
 
-                    if (iDamageable != null){
-                        iDamageable.Damage(damageAmount);
+                        if (enemyHeatlh != null){
+                            IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                            if (iDamageable != null){
+                                iDamageable.Damage(damageAmount);
+                            }
+                        }
                     }
                 }
             }
