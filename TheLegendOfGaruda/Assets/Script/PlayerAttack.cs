@@ -9,6 +9,18 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float damageAmount = 1f;
     private RaycastHit2D[] hits;
 
+    [Header("Garuda Descend")]
+    PlayerController playerController;
+    PlayerHealth playerHealth;
+    public float dashRange = 10f;
+    public float dashSpeed = 50f;
+    private Transform targetEnemy;
+    public int dashDamage = 1;
+    public float dashCooldown = 2f;
+
+    private bool isDashing = false;
+    private bool canDash = true;
+
     // Update is called once per frame
     // void Update()
     // {
@@ -38,4 +50,83 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmosSelected(){
         Gizmos.DrawWireSphere(attackTransform.position, attackRange);
     }
+
+    Transform FindNearestEnemy()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, dashRange, attackableLayer);
+        Transform nearestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (var hit in hits)
+        {
+            Vector2 directionToEnemy = hit.transform.position - transform.position;
+            float distanceToEnemy = directionToEnemy.magnitude;
+
+            // Perform a raycast to check for obstacles
+            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, directionToEnemy.normalized, distanceToEnemy, attackableLayer);
+
+            // Check if the raycast hits anything other than the enemy
+            if (raycastHit.collider == null || raycastHit.collider.transform == hit.transform)
+            {
+                if (distanceToEnemy < closestDistance)
+                {
+                    closestDistance = distanceToEnemy;
+                    nearestEnemy = hit.transform;
+                }
+            }
+        }
+
+        return nearestEnemy;
+    }
+
+
+    private IEnumerator DashCoroutine(Transform enemy)
+    {
+        canDash = false;
+        isDashing = true;
+
+        Vector2 startPosition = transform.position;
+        Vector2 targetPosition = enemy.position;
+
+        float elapsedTime = 0f;
+        float dashDuration = Vector2.Distance(startPosition, targetPosition) / dashSpeed;
+
+        // Disable gravity while dashing (if applicable)
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.gravityScale = 0;
+        }
+
+        while (elapsedTime < dashDuration)
+        {
+            transform.position = Vector2.Lerp(startPosition, targetPosition, elapsedTime / dashDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Snap to target position
+        transform.position = targetPosition;
+
+        // Apply damage to the enemy
+        IDamageable damageable = enemy.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.Damage(damageAmount);
+        }
+
+        // Re-enable gravity
+        if (rb != null)
+        {
+            rb.gravityScale = 1; // Set this to your normal gravity scale
+        }
+
+        isDashing = false;
+
+
+        // Start cooldown
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
 }

@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public float flySpeed = 15f;
     public float flySteer = 30f;
     public float flyDuration = 1f;
-    bool isFlying = false;
+    public bool isFlying = false;
     bool canFly = true;
 
     Vector2 moveInput;
@@ -62,13 +62,6 @@ public class PlayerController : MonoBehaviour
                 {
                     return walkSpeed;
                 }
-                //ini gw kasih else if gegara kalo taro di atas bakal bikin character stop abis air time
-                // GATAU MASIH BUTUH APA KAGA KARENA UDAH GW KASIH FRICTIONLESS DI RIGIDBODY
-                //else if (touchingDirections.isOnWall)
-                //{
-                //    // If airborne and touching a wall, allow wall behavior
-                //    return 0;
-                //}
                 else
                 {
                     return airSpeed;
