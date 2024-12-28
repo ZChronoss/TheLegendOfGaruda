@@ -262,6 +262,8 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         trailRenderer.emitting = true;
 
+        animator.SetTrigger(AnimationString.dash);
+
         float dashDirection = IsFacingRight ? 1 : -1;
 
         if (isFlying)
