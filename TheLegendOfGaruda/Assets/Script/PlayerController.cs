@@ -175,6 +175,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
         rb.linearVelocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.linearVelocity.y);
+
+        animator.SetFloat(AnimationString.yVelocity, rb.linearVelocity.y);
     }
 
     private void SetFacingDirection(Vector2 moveInput)
@@ -229,6 +231,7 @@ public class PlayerController : MonoBehaviour
             // kalo pencet ditahan bakal max jump height
             if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
             {
+                animator.SetTrigger(AnimationString.jump);
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
                 jumpBufferCounter = 0f;
                 hasPressedJumpButton = false;
