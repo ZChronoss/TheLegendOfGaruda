@@ -9,6 +9,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask attackableLayer;
     [SerializeField] private float damageAmount = 1f;
     private RaycastHit2D[] hits;
+    private Animator animator;
+    private TouchingDirections touchingDirections;
 
     [Header("Garuda Descend")]
     PlayerController playerController;
@@ -26,10 +28,12 @@ public class PlayerAttack : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerHealth = GetComponent<PlayerHealth>();
+        animator = GetComponent<Animator>();
+        touchingDirections = GetComponent<TouchingDirections>();
     }
 
     public void OnAttack(InputAction.CallbackContext context){
-        if(context.started){
+        if(context.started && playerController.CanMove){
             if (playerController.isFlying)
             {
                 targetEnemy = FindNearestEnemy();
@@ -45,8 +49,11 @@ public class PlayerAttack : MonoBehaviour
                     }
                 }
             }
-            else
+            else if (touchingDirections.isGrounded)
             {
+                // MARK: Animation
+                animator.SetTrigger(AnimationString.attackTrigger);
+
                 hits = Physics2D.CircleCastAll(attackTransform.position, attackRange, transform.right, 0f, attackableLayer);
                 for (int i = 0; i < hits.Length; i++){
                     RaycastHit2D hit = Physics2D.Linecast(transform.position, hits[i].transform.position, LayerMask.GetMask("Ground"));
