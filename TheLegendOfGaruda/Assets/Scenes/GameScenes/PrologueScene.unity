@@ -2021,7 +2021,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2077439769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 6433299490162478934, guid: 6a99e994213e14f8a964c9e6aca5f3ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc73afa1c7234edf8c465e3e7c37147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: GarudaTutorialScene
+  nextSceneName: BridgingScene
 --- !u!114 &1594148992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2316,8 +2316,8 @@ Transform:
   m_GameObject: {fileID: 1982410677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.0895, y: 0.9, z: 0.124266}
-  m_LocalScale: {x: 62.182545, y: 31.717293, z: 1}
+  m_LocalPosition: {x: 8.6478, y: 1.1921, z: 0.124266}
+  m_LocalScale: {x: 116.72799, y: 61.51893, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 300928734}
@@ -2364,7 +2364,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2077439769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
