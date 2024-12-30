@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dash Animation_v1_02_0: 3298853059423641091
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

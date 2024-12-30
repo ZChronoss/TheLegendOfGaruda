@@ -12,8 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScenes/IntroductionScene.unity
     guid: 19cb2c1e84829439ca540e474d8524fe
   - enabled: 1
+    path: Assets/Scenes/GameScenes/PrologueScene.unity
+    guid: 8d7ad4511a384483faf1dad57833263d
+  - enabled: 1
     path: Assets/Scenes/TutorialScene.unity
     guid: 889bc0f12f994434c9cf8d938ea8152e
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/GarudaTutorialScene.unity
+    guid: 8c286e9dbcaac482d93755d369ad6a9d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a3654eb3086594c1da187bb43817fc0c, type: 2}
   m_UseUCBPForAssetBundles: 0

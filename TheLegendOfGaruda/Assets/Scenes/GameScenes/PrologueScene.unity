@@ -327,6 +327,7 @@ Transform:
   - {fileID: 1527897333}
   - {fileID: 1192059040}
   - {fileID: 1982410678}
+  - {fileID: 1594148990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381059018
@@ -408,7 +409,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -6813219372848091781, guid: 9694c601e63ac4b2898d11380482f819, type: 2}
-    value: {fileID: 2033858338}
+    value: {fileID: 2033858352}
   - key: {fileID: 1689643232656422786, guid: 9694c601e63ac4b2898d11380482f819, type: 2}
     value: {fileID: 1269550142}
   - key: {fileID: -1157376086642053693, guid: 9694c601e63ac4b2898d11380482f819, type: 2}
@@ -1084,6 +1085,8 @@ PlayableDirector:
     value: {fileID: 1982410680}
   - key: {fileID: 6323177416723281289, guid: 092f72bc6bb1c4b7a91a9d3adf7c8d3c, type: 2}
     value: {fileID: 1527897334}
+  - key: {fileID: -3622486237051345412, guid: 092f72bc6bb1c4b7a91a9d3adf7c8d3c, type: 2}
+    value: {fileID: 1594148992}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1171667848
@@ -2017,8 +2020,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1961513535
-  m_SortingLayer: 1
+  m_SortingLayerID: 2077439769
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6433299490162478934, guid: 6a99e994213e14f8a964c9e6aca5f3ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2031,6 +2034,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1594148989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1594148990}
+  - component: {fileID: 1594148992}
+  - component: {fileID: 1594148991}
+  m_Layer: 0
+  m_Name: ChangeScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1594148990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594148989}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 21.179333, y: 4.3163505, z: 5.213908}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 300928734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1594148991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594148989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc73afa1c7234edf8c465e3e7c37147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: GarudaTutorialScene
+--- !u!114 &1594148992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594148989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ec2405ca70fe245469d0ef25f582053b, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1594148991}
+          m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
+          m_MethodName: changeScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1666648262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,8 +2363,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1961513535
-  m_SortingLayer: 1
+  m_SortingLayerID: 2077439769
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
@@ -6819,33 +6898,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &2033858326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3165170915980542636, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
+--- !u!95 &2033858352 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1962419971413493604, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
   m_PrefabInstance: {fileID: 2713716812378685593}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2033858338
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033858326}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2713716812378685593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6906,17 +6963,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7144841703007008552, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
-      propertyPath: m_PreviewTimeScale
-      value: 1
+    - target: {fileID: 5576762472066858855, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3165170915980542636, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2033858338}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
