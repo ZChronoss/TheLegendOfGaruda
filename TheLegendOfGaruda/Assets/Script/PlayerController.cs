@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public float flySpeed = 15f;
     public float flySteer = 30f;
     public float flyDuration = 1f;
-    bool isFlying = false;
+    public bool isFlying = false;
     bool canFly = true;
 
     Vector2 moveInput;
@@ -51,35 +51,45 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
-
+    Animator animator;
     public float CurrentMoveSpeed
     {
         get
         {
-            if (IsMoving && !DialogueManager.isActive) 
+            if (CanMove)
             {
-                if (touchingDirections.isGrounded)
+                if (IsMoving && !DialogueManager.isActive)
                 {
-                    return walkSpeed;
+                    if (touchingDirections.isGrounded)
+                    {
+                        return walkSpeed;
+                    }
+                    else
+                    {
+                        return airSpeed;
+                    }
                 }
-                //ini gw kasih else if gegara kalo taro di atas bakal bikin character stop abis air time
-                // GATAU MASIH BUTUH APA KAGA KARENA UDAH GW KASIH FRICTIONLESS DI RIGIDBODY
-                //else if (touchingDirections.isOnWall)
-                //{
-                //    // If airborne and touching a wall, allow wall behavior
-                //    return 0;
-                //}
                 else
                 {
-                    return airSpeed;
+                    // idle
+                    return 0;
                 }
             }
             else
             {
-                // idle
+                // lock movement
                 return 0;
             }
             
+            
+        }
+    }
+
+    public bool CanMove
+    {
+        get
+        {
+            return animator.GetBool(AnimationString.canMove);
         }
     }
 
@@ -125,6 +135,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         trailRenderer = GetComponent<TrailRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -164,6 +175,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
         rb.linearVelocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.linearVelocity.y);
+
+        animator.SetFloat(AnimationString.yVelocity, rb.linearVelocity.y);
     }
 
     private void SetFacingDirection(Vector2 moveInput)
@@ -208,31 +221,35 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context) 
     {
-        if (context.started)
+        if(CanMove)
         {
-            hasPressedJumpButton = true;
-            jumpBufferCounter = jumpBufferTime;
-        }
-        // kalo pencet ditahan bakal max jump height
-        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
-            jumpBufferCounter = 0f;
-            hasPressedJumpButton = false;
-        }
-        else if (context.canceled && Vector2.Dot(rb.linearVelocity, Vector2.up) > 0)
-        {
-            // kalo light tap bakal setengahnya
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            if (context.started)
+            {
+                hasPressedJumpButton = true;
+                jumpBufferCounter = jumpBufferTime;
+            }
+            // kalo pencet ditahan bakal max jump height
+            if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
+            {
+                animator.SetTrigger(AnimationString.jump);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpImpulse);
+                jumpBufferCounter = 0f;
+                hasPressedJumpButton = false;
+            }
+            else if (context.canceled && Vector2.Dot(rb.linearVelocity, Vector2.up) > 0)
+            {
+                // kalo light tap bakal setengahnya
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
 
-            coyoteTimeCounter = 0f;
-            hasPressedJumpButton = false;
+                coyoteTimeCounter = 0f;
+                hasPressedJumpButton = false;
+            }
         }
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.started && canDash)
+        if (context.started && canDash && CanMove)
         {
             StartCoroutine(DashCoroutine());
         }
@@ -244,6 +261,8 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
         trailRenderer.emitting = true;
+
+        animator.SetTrigger(AnimationString.dash);
 
         float dashDirection = IsFacingRight ? 1 : -1;
 
@@ -271,7 +290,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnFly(InputAction.CallbackContext context) {
-        if (!touchingDirections.isGrounded && context.performed && canFly) {
+        if (!touchingDirections.isGrounded && context.performed && canFly && CanMove) {
             StartCoroutine(FlyCoroutine());
         }
     }

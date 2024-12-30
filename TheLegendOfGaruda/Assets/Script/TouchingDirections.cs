@@ -5,7 +5,9 @@ public class TouchingDirections : MonoBehaviour
     public ContactFilter2D castFilter;
     public float groundDistance = 0.05f;
     public float wallDistance = 0.2f;
+
     CapsuleCollider2D touchingCol;
+    Animator animator;
 
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
     RaycastHit2D[] wallHits = new RaycastHit2D[5];
@@ -17,11 +19,12 @@ public class TouchingDirections : MonoBehaviour
     { 
         get 
         {
-        return _isGrounded;
+            return _isGrounded;
         } 
         private set 
         {
             _isGrounded = value;
+            animator.SetBool(AnimationString.isGrounded, value);
         } 
     }
 
@@ -42,6 +45,7 @@ public class TouchingDirections : MonoBehaviour
     private void Awake() 
     {
         touchingCol = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()

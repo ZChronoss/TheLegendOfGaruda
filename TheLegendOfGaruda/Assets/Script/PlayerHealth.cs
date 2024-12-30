@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
+        maxHealth = PlayerPrefs.GetInt("MaxHealth", 3);
         healthUI = FindAnyObjectByType<HealthUI>();
         // MARK: Set current healthnya ada di function ResetHealth() 
         ResetHealth();
@@ -24,6 +25,23 @@ public class PlayerHealth : MonoBehaviour
         if(HitFlash == null){
             HitFlash = gameObject.AddComponent<HitFlash>();
         }
+    }
+
+    public void IncreaseHealthPoint(int amount)
+    {
+        maxHealth += amount;
+        health += amount;
+
+        PlayerPrefs.SetInt("MaxHealth", maxHealth);
+        PlayerPrefs.Save();
+
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        
+        healthUI.SetMaxHeart(maxHealth);
+        healthUI.UpdateHearts(health);
     }
 
     public void Heal(int amount)
@@ -53,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private IEnumerator BecomeTemporarilyInvincible(float invincibilityDuration)
+    public IEnumerator BecomeTemporarilyInvincible(float invincibilityDuration)
     {
         isInvincible = true;
 

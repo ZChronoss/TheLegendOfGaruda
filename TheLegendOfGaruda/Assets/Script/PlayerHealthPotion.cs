@@ -22,6 +22,7 @@ public class PlayerHealthPotion : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        maxPotion = PlayerPrefs.GetInt("maxPotion", 2); // Load saved maxPotion, default 3
         potionUI = FindAnyObjectByType<HealPotionUI>();
         ResetPotions();
         potionUI.UpdateHPotions(potions);
@@ -34,8 +35,25 @@ public class PlayerHealthPotion : MonoBehaviour
 
     void ResetPotions()
     {
-        potions = 2;
+        potions = maxPotion;
         potionUI.SetMaxHealPotions(maxPotion);
+    }
+
+    public void IncreasePotionAmount(int amount)
+    {
+        maxPotion += amount;
+        potions += amount;
+
+        PlayerPrefs.SetInt("maxPotion", maxPotion);
+        PlayerPrefs.Save();
+
+        if (potions > maxPotion)
+        {
+            potions = maxPotion;
+        }
+
+        potionUI.SetMaxHealPotions(maxPotion);
+        potionUI.UpdateHPotions(potions);
     }
 
     public void OnHeal(InputAction.CallbackContext context)

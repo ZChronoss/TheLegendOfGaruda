@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 273818891174533809}
   - component: {fileID: 5576762472066858855}
   - component: {fileID: 7144841703007008552}
+  - component: {fileID: 1962419971413493604}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -40,7 +41,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8446800324352771564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2997392494735063402
@@ -84,15 +86,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1624248263
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a07e210585860aa4f9d4a67fa30be643, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c98967684f1052469366750c24ca55c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 7.5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -159,8 +161,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.3964643, y: 3.9272625}
+  m_Offset: {x: -0.46019357, y: -0.43959928}
+  m_Size: {x: 1.9305891, y: 3.7610822}
   m_Direction: 0
 --- !u!58 &9091321640032119139
 CircleCollider2D:
@@ -196,8 +198,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1.9291196
+  m_Offset: {x: -0.46019262, y: -0.44254053}
+  m_Radius: 1.8887416
 --- !u!114 &7336748748338506340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +400,7 @@ MonoBehaviour:
   flySpeed: 15
   flySteer: 30
   flyDuration: 1
+  isFlying: 0
   _isMoving: 0
   _isFacingRight: 1
 --- !u!114 &3509917459315824717
@@ -489,11 +492,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3ff6859f69a4d2c98fe58807504ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackTransform: {fileID: 8446800324352771564}
   attackRange: 1.5
   attackableLayer:
     serializedVersion: 2
     m_Bits: 64
   damageAmount: 1
+  dashRange: 10
+  dashSpeed: 50
+  dashDamage: 1
+  dashCooldown: 2
 --- !u!96 &7144841703007008552
 TrailRenderer:
   serializedVersion: 3
@@ -601,3 +609,56 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &1962419971413493604
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165170915980542636}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75ca6beb8f740d44c8bcbc05a5419efc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6743666793778173302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8446800324352771564}
+  m_Layer: 8
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8446800324352771564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743666793778173302}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.16, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5284772672468228997}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
