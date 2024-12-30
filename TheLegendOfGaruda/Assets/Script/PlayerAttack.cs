@@ -53,6 +53,7 @@ public class PlayerAttack : MonoBehaviour
                     if (hit.collider == null)
                     {
                         IDamageable enemyHeatlh = hits[i].collider.gameObject.GetComponent<IDamageable>();
+                        PurchasableItem purchasableItem = hits[i].collider.gameObject.GetComponent<PurchasableItem>();
 
                         if (enemyHeatlh != null){
                             IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
@@ -60,6 +61,10 @@ public class PlayerAttack : MonoBehaviour
                             if (iDamageable != null){
                                 iDamageable.Damage(damageAmount);
                             }
+                        }
+
+                        if (purchasableItem != null){
+                            purchasableItem.PurchaseItem();
                         }
                     }
                 }
