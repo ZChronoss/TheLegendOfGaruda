@@ -1,18 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class DialogueTrigger : MonoBehaviour
 {
     public Message[] messages;
     public Actor[] actors;
-    // private void Start()
-    // {
-    //     StartDialogue();
-    // }
+
     public void StartDialogue() {
         FindFirstObjectByType<DialogueManager>().OpenDialogue(messages, actors);
     }
@@ -22,6 +15,7 @@ public class DialogueTrigger : MonoBehaviour
 public class Message {
     public int actorId;
     public string message;
+    public PlayableDirector timeline;
 }
 
 [System.Serializable]
