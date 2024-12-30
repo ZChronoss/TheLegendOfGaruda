@@ -12,6 +12,7 @@ TagManager:
   - Projectile
   - Spike
   - Platform
+  - FloatingTextBox
   layers:
   - Default
   - TransparentFX
