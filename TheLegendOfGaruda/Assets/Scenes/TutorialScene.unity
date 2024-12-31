@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_text: Coin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cc192846be91c4409d229a0508a7e71, type: 2}
-  m_sharedMaterial: {fileID: 2025796504472211832, guid: 8cc192846be91c4409d229a0508a7e71, type: 2}
+  m_sharedMaterial: {fileID: -2424927458397936682, guid: 8cc192846be91c4409d229a0508a7e71, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
