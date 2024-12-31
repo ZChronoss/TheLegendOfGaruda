@@ -371,6 +371,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a7446644-2889-4d3f-ad5f-5744c8f6ec19
     m_ActionName: 'Player/Attack[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3de795f-fd51-49b0-8c12-75a75fce13a3
+    m_ActionName: 'Player/Rest[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -474,10 +478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPotion: 2
-  potions: 1
+  potions: 0
   healAmount: 1
-  healTime: 0.8
-  potionUI: {fileID: 977381814642284788, guid: 18aa0f71ef0357b4ea87dece4388b27e, type: 3}
+  healTime: 1.6
+  potionUI: {fileID: 0}
   playerHealth: {fileID: 3253769365532840613}
   input: {fileID: -944628639613478452, guid: 164c83e9aa6d97d49b9471ca72e22f4d, type: 3}
 --- !u!114 &5576762472066858855

@@ -8,7 +8,7 @@ public class PlayerHealthPotion : MonoBehaviour
     public int potions;
 
     public int healAmount = 1;
-    public float healTime = 0.8f;
+    public float healTime = 1.6f;
 
     private SpriteRenderer spriteRenderer;
 
@@ -18,6 +18,8 @@ public class PlayerHealthPotion : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private InputActionAsset input;
+    TouchingDirections touchDir;
+    Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,9 +33,11 @@ public class PlayerHealthPotion : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        touchDir = GetComponent<TouchingDirections>();
+        animator = GetComponent<Animator>();
     }
 
-    void ResetPotions()
+    public void ResetPotions()
     {
         potions = maxPotion;
         potionUI.SetMaxHealPotions(maxPotion);
@@ -58,7 +62,7 @@ public class PlayerHealthPotion : MonoBehaviour
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-        if (context.started && playerHealth.health < playerHealth.maxHealth)
+        if (context.started && playerHealth.health < playerHealth.maxHealth && touchDir.isGrounded)
         {
             if (potions > 0)
             {
@@ -70,7 +74,7 @@ public class PlayerHealthPotion : MonoBehaviour
     private IEnumerator HealCoroutine()
     {
         input.Disable();
-
+        animator.SetTrigger(AnimationString.heal);
         yield return new WaitForSeconds(healTime);
 
         potions--;
