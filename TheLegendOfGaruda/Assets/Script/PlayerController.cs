@@ -9,7 +9,7 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
     [Header("Walk")]
     public float walkSpeed = 10f;
@@ -333,5 +333,15 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitUntil(isGrounded);
         canFly = true;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = this.transform.position;
     }
 }

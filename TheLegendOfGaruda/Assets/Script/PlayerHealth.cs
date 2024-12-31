@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
     public int maxHealth = 3;
     public int health;
@@ -15,11 +15,11 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
-        maxHealth = PlayerPrefs.GetInt("MaxHealth", 3);
+        //maxHealth = PlayerPrefs.GetInt("MaxHealth", 3);
         healthUI = FindAnyObjectByType<HealthUI>();
         // MARK: Set current healthnya ada di function ResetHealth() 
-        ResetHealth();
-        // healthUI.UpdateHearts(health);
+        //ResetHealth();
+        //healthUI.UpdateHearts(health);
         spriteRenderer = GetComponent<SpriteRenderer>();
         HitFlash = GetComponent<HitFlash>();
         if(HitFlash == null){
@@ -90,5 +90,20 @@ public class PlayerHealth : MonoBehaviour
         if(healthUI){
             healthUI.SetMaxHeart(maxHealth);
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.health = data.healthAmount;
+        this.maxHealth = data.maxHealth;
+
+        healthUI.SetMaxHeart(maxHealth);
+        healthUI.UpdateHearts(health);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.healthAmount = this.health;
+        data.maxHealth = this.maxHealth;
     }
 }
