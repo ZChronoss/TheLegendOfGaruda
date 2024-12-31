@@ -49,6 +49,7 @@ ExportedObj/
 
 # Game save format
 *.game
+*.game.meta
 
 # Unity3D generated meta files
 *.pidb.meta
