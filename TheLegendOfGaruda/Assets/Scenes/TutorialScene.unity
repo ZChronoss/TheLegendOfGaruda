@@ -994,6 +994,63 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1001 &578863862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3853426630107016244, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_Name
+      value: Bonfire
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592696225302998033, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
 --- !u!1 &647595069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,8 +1849,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -338474371
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3211,8 +3268,10 @@ MonoBehaviour:
   messages:
   - actorId: 0
     message: I've made it
+    timeline: {fileID: 0}
   - actorId: 0
     message: First step into the snakes hideout
+    timeline: {fileID: 0}
   actors:
   - name: Garuda
     sprite: {fileID: 21300000, guid: a07e210585860aa4f9d4a67fa30be643, type: 3}
@@ -3401,6 +3460,7 @@ MonoBehaviour:
   messages:
   - actorId: 0
     message: I will rescue mother...
+    timeline: {fileID: 0}
   actors:
   - name: Garuda
     sprite: {fileID: 21300000, guid: a07e210585860aa4f9d4a67fa30be643, type: 3}
@@ -4193,3 +4253,4 @@ SceneRoots:
   - {fileID: 1950696232}
   - {fileID: 1279033119}
   - {fileID: 6684136252837217989}
+  - {fileID: 578863862}
