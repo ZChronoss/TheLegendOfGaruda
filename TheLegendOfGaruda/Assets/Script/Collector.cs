@@ -11,13 +11,4 @@ public class Collector : MonoBehaviour
             item.Collect();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        IItem item = collision.collider.GetComponent<IItem>();
-
-        if(item != null)
-        {
-            item.Collect();
-        }
-    }
 }
