@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerHealthPotion : MonoBehaviour
+public class PlayerHealthPotion : MonoBehaviour, IDataPersistence
 {
     public int maxPotion = 2;
     public int potions;
@@ -15,8 +15,6 @@ public class PlayerHealthPotion : MonoBehaviour
     public HealPotionUI potionUI;
     public PlayerHealth playerHealth;
 
-    private Rigidbody2D rb;
-
     [SerializeField] private InputActionAsset input;
     TouchingDirections touchDir;
     Animator animator;
@@ -24,15 +22,15 @@ public class PlayerHealthPotion : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxPotion = PlayerPrefs.GetInt("maxPotion", 2); // Load saved maxPotion, default 3
-        potionUI = FindAnyObjectByType<HealPotionUI>();
-        ResetPotions();
-        potionUI.UpdateHPotions(potions);
+        // Load saved maxPotion, default 3
+        //maxPotion = PlayerPrefs.GetInt("maxPotion", 2); 
+        //ResetPotions();
+        //potionUI.UpdateHPotions(potions);
     }
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        potionUI = FindAnyObjectByType<HealPotionUI>();
         touchDir = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
     }
@@ -82,5 +80,20 @@ public class PlayerHealthPotion : MonoBehaviour
         potionUI.UpdateHPotions(potions);
 
         input.Enable();
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.potions = data.hPotionAmount;
+        this.maxPotion = data.maxHPotion;
+
+        potionUI.SetMaxHealPotions(maxPotion);
+        potionUI.UpdateHPotions(potions);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.hPotionAmount = this.potions;
+        data.maxHPotion = this.maxPotion;
     }
 }
