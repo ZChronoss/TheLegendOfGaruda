@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
 
-public class DialogueCollision : MonoBehaviour
+public class DialogueCollision : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private String id;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
     public DialogueTrigger trigger;
-    private bool hasTriggered = false; // To ensure the dialogue triggers only once
+    private Boolean hasTriggered = false; // To ensure the dialogue triggers only once
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,4 +26,21 @@ public class DialogueCollision : MonoBehaviour
         }
     }
 
+    public void LoadData(GameData data)
+    {
+        data.dialogues.TryGetValue(id, out hasTriggered);
+        if (hasTriggered) 
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.dialogues.ContainsKey(id))
+        {
+            data.dialogues.Remove(id);
+        }
+        data.dialogues.Add(id, hasTriggered);
+    }
 }

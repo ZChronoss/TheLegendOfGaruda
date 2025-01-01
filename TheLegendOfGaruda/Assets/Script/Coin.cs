@@ -1,15 +1,42 @@
 using System;
 using UnityEngine;
 
-public class Coin : MonoBehaviour, IItem
+public class Coin : MonoBehaviour, IItem, IDataPersistence
 {
-    // basically ini kek subscriber gitu
+    [SerializeField] private String id;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
     public static event Action<int> OnCoinCollect;
     public int amount = 5;
+    private Boolean collected = false;
 
     public void Collect()
     {
         OnCoinCollect.Invoke(amount);
         Destroy(gameObject);
+        collected = true;
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.collectibles.TryGetValue(id, out collected);
+        if (collected) 
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.collectibles.ContainsKey(id))
+        {
+            data.collectibles.Remove(id);
+        }
+        data.collectibles.Add(id, collected);
     }
 }
