@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviour, IDataPersistence
 {
     public int coinAmount;
     public TMP_Text coinText;
@@ -9,7 +9,6 @@ public class GameController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        coinAmount = 0;
         coinText.text = coinAmount.ToString();
         // Tiap kali coin ke collect, code ini jalan
         Coin.OnCoinCollect += IncreaseCoinAmount;
@@ -25,5 +24,15 @@ public class GameController : MonoBehaviour
     {
         coinAmount -= amount;
         coinText.text = coinAmount.ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.coinAmount = data.coinAmount;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.coinAmount = this.coinAmount;
     }
 }

@@ -11,6 +11,7 @@ public class BonfireController : MonoBehaviour
 
     PlayerHealth pHealth;
     PlayerHealthPotion pHPotion;
+    private DataPersistenceManager dataPersistenceManager;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class BonfireController : MonoBehaviour
     {
         pHealth = FindAnyObjectByType<PlayerController>().GetComponent<PlayerHealth>();
         pHPotion = FindAnyObjectByType<PlayerController>().GetComponent<PlayerHealthPotion>();
+
+        dataPersistenceManager = FindAnyObjectByType<DataPersistenceManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,11 +53,11 @@ public class BonfireController : MonoBehaviour
     private IEnumerator RestCoroutine()
     {
         input.Disable();
-
         yield return new WaitForSeconds(restTime);
 
         pHealth.ResetHealth();
         pHPotion.ResetPotions();
+        dataPersistenceManager.SaveGame();
 
         input.Enable();
     }
