@@ -1,14 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour, IDamageable
+public class EnemyHealth : MonoBehaviour, IDamageable, IDataPersistence
 {
+    [SerializeField] private String id;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
     [SerializeField] private float maxHealth = 3f;
     private float currentHealth;
     public delegate void EntityDeathHandler(EnemyHealth enemy);
     public event EntityDeathHandler OnEntityDeath;
     private HitFlash HitFlash;
+    private Boolean dead = false;
 
     [Header("Loot")]
     public List<LootItem> lootTable = new List<LootItem>();
@@ -36,7 +45,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void Die(){
         foreach (LootItem item in lootTable)
         {
-            if (Random.Range(0f, 100f) <= item.dropChance)
+            if (UnityEngine.Random.Range(0f, 100f) <= item.dropChance)
             {
                 InstantiateLoot(item.itemPrefab);
             }
@@ -52,5 +61,23 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         {
             GameObject droppedLoot = Instantiate(loot, transform.position, Quaternion.identity);
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.enemies.TryGetValue(id, out dead);
+        if (dead) 
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.enemies.ContainsKey(id))
+        {
+            data.enemies.Remove(id);
+        }
+        data.enemies.Add(id, dead);
     }
 }

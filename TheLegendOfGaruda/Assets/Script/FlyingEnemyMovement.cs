@@ -5,6 +5,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     public float speed = 1f;
     public float amplitude = 1f; // Amplitude of the sine wave
     public float frequency = 1f; // Frequency of the sine wave
+    public float aggroAreaSize = 5f;
     private Transform player;
     public Transform[] patrolPoints; // Array of patrol points
     private int currentPatrolIndex = 0; // Current patrol point index
@@ -45,7 +46,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         if (player == null) return;
 
-        if (Vector2.Distance(transform.position, player.position) < 3f) {
+        if (Vector2.Distance(transform.position, player.position) < aggroAreaSize) {
             isChasing = true;
         }
 

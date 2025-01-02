@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
-  cost: 10
+  cost: 30
   itemName: Potion Upgrade
   itemDescription: Raises maximum potion by 1 point
   floatingTextBox: {fileID: 2692075611754992217}

@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8275956968310665833}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -173.91241, y: -7.7444267, z: -0.6914287}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 2
   jumpForce: 5
-  aggroAreaSize: 3
+  aggroAreaSize: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 128

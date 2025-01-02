@@ -471,7 +471,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.26, y: -1.25, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 317255028729969125}
@@ -544,7 +544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d835438c2b179274fa3035703154b8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 10
+  id: 
+  cost: 25
   itemName: Health Upgrade
   itemDescription: Raises maximum health by 1 point
   floatingTextBox: {fileID: 3022588121933696763}
