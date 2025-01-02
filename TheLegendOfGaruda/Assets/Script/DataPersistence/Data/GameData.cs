@@ -12,6 +12,7 @@ public class GameData
     public int maxHPotion;
     public int hPotionAmount;
 
+    public string playerScene;
     public Vector3 playerPosition;
 
     public SerializableDictionary<string, bool> collectibles;

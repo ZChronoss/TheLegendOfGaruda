@@ -91,7 +91,7 @@ public class PlayerHealthPotion : MonoBehaviour, IDataPersistence
         potionUI.UpdateHPotions(potions);
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.hPotionAmount = this.potions;
         data.maxHPotion = this.maxPotion;
