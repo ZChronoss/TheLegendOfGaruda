@@ -130,8 +130,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
     }
 
+    PlayerHealth playerHealth;
+
     public void Awake()
     {
+        playerHealth = GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody2D>();
         touchingDirections = GetComponent<TouchingDirections>();
         trailRenderer = GetComponent<TrailRenderer>();
@@ -258,6 +261,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     // co routine itu kek code yang jalan di multiple frame, jadi kek bisa nunggu di satu titik baru lanjut
     private IEnumerator DashCoroutine()
     {
+        playerHealth.becomeInvulnerable();
         canDash = false;
         isDashing = true;
         trailRenderer.emitting = true;
@@ -278,6 +282,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
 
         isDashing = false;
+        playerHealth.removeInvulnerable();
         trailRenderer.emitting = false;
 
         yield return new WaitForSeconds(dashCooldown);

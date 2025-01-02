@@ -18,8 +18,6 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         //maxHealth = PlayerPrefs.GetInt("MaxHealth", 3);
         healthUI = FindAnyObjectByType<HealthUI>();
         // MARK: Set current healthnya ada di function ResetHealth() 
-        //ResetHealth();
-        //healthUI.UpdateHearts(health);
         spriteRenderer = GetComponent<SpriteRenderer>();
         HitFlash = GetComponent<HitFlash>();
         if(HitFlash == null){
@@ -31,9 +29,6 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     {
         maxHealth += amount;
         health += amount;
-
-        PlayerPrefs.SetInt("MaxHealth", maxHealth);
-        PlayerPrefs.Save();
 
         if(health > maxHealth)
         {
@@ -81,6 +76,20 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
             yield return new WaitForSeconds(invincibilityDeltaTime);
         }
         isInvincible = false;
+    }
+
+    public void becomeInvulnerable()
+    {
+        isInvincible = true;
+
+        HitFlash.giveOutline();
+    }
+
+    public void removeInvulnerable()
+    {
+        isInvincible = false;
+
+        HitFlash.removeOutline();
     }
 
     public void ResetHealth()
