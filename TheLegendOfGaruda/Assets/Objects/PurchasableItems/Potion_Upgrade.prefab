@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d835438c2b179274fa3035703154b8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
   cost: 10
   itemName: Potion Upgrade
   itemDescription: Raises maximum potion by 1 point
