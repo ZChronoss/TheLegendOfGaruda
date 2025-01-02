@@ -47,7 +47,7 @@ public class PurchasableItem : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void SaveData(ref GameData data){
+    public void SaveData(GameData data){
         if(data.upgradables.ContainsKey(id)){
             data.upgradables.Remove(id);
         }

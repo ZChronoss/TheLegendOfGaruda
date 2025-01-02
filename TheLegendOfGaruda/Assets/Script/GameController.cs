@@ -9,20 +9,11 @@ public class GameController : MonoBehaviour, IDataPersistence
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {   
-        StartCoroutine(DelayedStart());
-        
-    }
-
-    // Pastiin di load dulu baru di start
-    IEnumerator DelayedStart()
     {
-        yield return null; // Wait for one frame to ensure LoadData is called
+        //StartCoroutine(DelayedStart());
         coinText.text = coinAmount.ToString();
-        Debug.Log("coinAmount" + coinAmount.ToString());
-        // Tiap kali coin ke collect, code ini jalan
         Coin.OnCoinCollect += IncreaseCoinAmount;
-    }   
+    }
 
     void IncreaseCoinAmount(int amount)
     {
@@ -39,10 +30,9 @@ public class GameController : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.coinAmount = data.coinAmount;
-        Debug.Log("LOADcoinAmount" + this.coinAmount);
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.coinAmount = this.coinAmount;
     }
