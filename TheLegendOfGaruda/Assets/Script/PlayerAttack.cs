@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     public float dashSpeed = 50f;
     private Transform targetEnemy;
     public int dashDamage = 1;
-    public float dashCooldown = 2f;
+    public float dashCooldown = 1f;
 
     private bool isDashing = false;
     private bool canDash = true;
@@ -45,7 +45,6 @@ public class PlayerAttack : MonoBehaviour
                     if (hit.collider == null)
                     {
                         StartCoroutine(DashCoroutine(targetEnemy));
-                        StartCoroutine(playerHealth.BecomeTemporarilyInvincible(2f));
                     }
                 }
             }
@@ -114,6 +113,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator DashCoroutine(Transform enemy)
     {
+        playerHealth.becomeInvulnerable();
         canDash = false;
         isDashing = true;
 
@@ -154,7 +154,8 @@ public class PlayerAttack : MonoBehaviour
         }
 
         isDashing = false;
-
+        yield return new WaitForSeconds(1f);
+        playerHealth.removeInvulnerable();
 
         // Start cooldown
         yield return new WaitForSeconds(dashCooldown);

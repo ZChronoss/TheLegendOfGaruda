@@ -15,6 +15,7 @@ public class GameData
     public Vector3 playerPosition;
 
     public SerializableDictionary<string, bool> collectibles;
+    public SerializableDictionary<string, bool> upgradables;
     public SerializableDictionary<string, bool> dialogues;
 
     // value yang di define di constructor bakal jadi default value di new game
@@ -31,6 +32,7 @@ public class GameData
         this.hPotionAmount = 2;
 
         collectibles = new SerializableDictionary<string, bool>();
+        upgradables = new SerializableDictionary<string, bool>();
         dialogues = new SerializableDictionary<string, bool>();
     }
 }

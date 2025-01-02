@@ -147,10 +147,10 @@ CapsuleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -505,7 +505,7 @@ MonoBehaviour:
   dashRange: 10
   dashSpeed: 50
   dashDamage: 1
-  dashCooldown: 2
+  dashCooldown: 1
 --- !u!96 &7144841703007008552
 TrailRenderer:
   serializedVersion: 3
