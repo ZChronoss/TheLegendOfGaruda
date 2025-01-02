@@ -35,6 +35,7 @@ public class PurchasableItem : MonoBehaviour, IDataPersistence
         {
             playerCoins.DecreaseCoinAmount(cost);
             collected = true;
+            GetComponent<IUpgradable>().Upgrade();
             Destroy(gameObject);
         }
     }
