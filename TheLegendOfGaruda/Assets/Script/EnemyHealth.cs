@@ -72,7 +72,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable, IDataPersistence
         }
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         if (data.enemies.ContainsKey(id))
         {
