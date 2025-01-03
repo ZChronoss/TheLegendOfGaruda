@@ -31,7 +31,7 @@ public class Coin : MonoBehaviour, IItem, IDataPersistence
         }
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         if (data.collectibles.ContainsKey(id))
         {

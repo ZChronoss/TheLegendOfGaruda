@@ -110,7 +110,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         healthUI.UpdateHearts(health);
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.healthAmount = this.health;
         data.maxHealth = this.maxHealth;
