@@ -62,11 +62,11 @@ TagManager:
   - name: Foreground
     uniqueID: 1961513535
     locked: 0
-  - name: HiddenArea
-    uniqueID: 1971673215
-    locked: 0
   - name: Characters
     uniqueID: 2670719033
+    locked: 0
+  - name: HiddenArea
+    uniqueID: 1971673215
     locked: 0
   - name: UI
     uniqueID: 2077439769

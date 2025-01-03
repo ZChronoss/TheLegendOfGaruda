@@ -18,6 +18,7 @@ public class GameData
     public SerializableDictionary<string, bool> collectibles;
     public SerializableDictionary<string, bool> upgradables;
     public SerializableDictionary<string, bool> dialogues;
+    public SerializableDictionary<string, bool> enemies;
 
     // value yang di define di constructor bakal jadi default value di new game
     // (kalo gaada data yang bisa di load)
@@ -35,5 +36,6 @@ public class GameData
         collectibles = new SerializableDictionary<string, bool>();
         upgradables = new SerializableDictionary<string, bool>();
         dialogues = new SerializableDictionary<string, bool>();
+        enemies = new SerializableDictionary<string, bool>();
     }
 }

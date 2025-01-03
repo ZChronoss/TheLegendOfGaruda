@@ -492,7 +492,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  lootTable: []
+  lootTable:
+  - itemPrefab: {fileID: 0}
+    dropChance: 50
 --- !u!114 &289808229181603385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
   jumpForce: 2
-  aggroAreaSize: 3
+  aggroAreaSize: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
