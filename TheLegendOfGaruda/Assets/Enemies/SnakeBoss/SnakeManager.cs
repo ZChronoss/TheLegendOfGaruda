@@ -20,10 +20,13 @@ public class SnakeManager : MonoBehaviour, IStunnable
     private Rigidbody2D rb;
     private float countUp = 0;
     [SerializeField] List<GameObject> bodySegments = new List<GameObject>(new GameObject[3]);
+
+    public BossHealthUI healthBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         target.Add(GameObject.FindGameObjectWithTag("Player"));
         createBodyParts();
         rb = snakeBody[0].GetComponent<Rigidbody2D>();
