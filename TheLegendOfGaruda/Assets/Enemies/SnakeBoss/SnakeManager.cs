@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SnakeManager : MonoBehaviour, IStunnable
@@ -9,6 +10,7 @@ public class SnakeManager : MonoBehaviour, IStunnable
     public float maxHealth = 200f;
     public float health;
     private bool fleeingState = false;
+    public bool chasingState = false;
     [SerializeField] float rotateSpeed = 200f; 
     [SerializeField] float distanceBetween = 2f;
     [SerializeField] List<GameObject> bodyParts = new List<GameObject>();
@@ -30,6 +32,7 @@ public class SnakeManager : MonoBehaviour, IStunnable
         target.Add(GameObject.FindGameObjectWithTag("Player"));
         createBodyParts();
         rb = snakeBody[0].GetComponent<Rigidbody2D>();
+        gameObject.SetActive(false);
     }
 
     void Update(){
@@ -58,7 +61,13 @@ public class SnakeManager : MonoBehaviour, IStunnable
     }
 
     private void movementHandler(bool towards){
-        Vector2 direction = (snakeBody[0].transform.position - target[0].transform.position).normalized;
+        Vector2 direction = new Vector2();
+
+        if (chasingState){
+            direction = (snakeBody[0].transform.position - target[target.Count-1].transform.position).normalized;
+        }else{
+            direction = (snakeBody[0].transform.position - target[0].transform.position).normalized;
+        }
 
         if (!towards)
         {
@@ -100,6 +109,7 @@ public class SnakeManager : MonoBehaviour, IStunnable
         fleeingState = true;
         yield return new WaitForSeconds(duration);
         fleeingState = false;
+        chasingState = false;
     }
 
     private void createBodyParts(){

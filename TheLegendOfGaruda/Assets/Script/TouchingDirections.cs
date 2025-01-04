@@ -46,6 +46,8 @@ public class TouchingDirections : MonoBehaviour
     {
         touchingCol = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
+        castFilter = new ContactFilter2D();
+        castFilter.SetLayerMask(LayerMask.GetMask("Ground"));   
     }
 
     void Update()
