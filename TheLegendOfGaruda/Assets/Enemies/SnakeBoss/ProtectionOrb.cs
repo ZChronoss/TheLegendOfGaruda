@@ -7,14 +7,18 @@ public class ProtectionOrb : MonoBehaviour, IItem
     public int amount = 5;
     private GameObject snake;
     private GameObject player;
-    public void Start(){
+    public void Awake(){
         snake = GameObject.FindGameObjectWithTag("SnakeBoss");
         player = GameObject.FindGameObjectWithTag("Player");
-        snake.GetComponent<SnakeManager>().target.Insert(0, gameObject);
+        if(snake){
+            snake.GetComponent<SnakeManager>().target.Insert(0, gameObject);
+        }
     }
     public void Collect()
     {
-        snake.GetComponent<SnakeManager>().target.Remove(gameObject);
+        if(snake){
+            snake.GetComponent<SnakeManager>().target.Remove(gameObject);
+        }
         if(player.GetComponent<ProtectionBarrierManager>() != null){
             player.GetComponent<ProtectionBarrierManager>().HandleOrbCollected();
         }else{

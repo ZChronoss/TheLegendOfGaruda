@@ -18,10 +18,10 @@ public class mainBossDragon : MonoBehaviour
     public void RegisterEnemy(EnemyHealth enemy)
     {
         // Add the enemy's GameObject to the list of spawned enemies
-        spawnedEnemies.Add(enemy.gameObject);
+        // spawnedEnemies.Add(enemy.gameObject);
 
         // Subscribe to the enemy's death event
-        enemy.OnEntityDeath += OnEntityDied;
+        // enemy.OnEntityDeath += OnEntityDied;
     }
 
     private void OnEntityDied(EnemyHealth enemy)
