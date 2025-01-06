@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1937c8ebb04462a921e00c814371e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 0
-  jumpForce: 0
+  chaseSpeed: 3
+  jumpForce: 2
   aggroAreaSize: 10
   groundLayer:
     serializedVersion: 2
