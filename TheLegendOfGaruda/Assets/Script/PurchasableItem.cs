@@ -15,7 +15,7 @@ public class PurchasableItem : MonoBehaviour, IDataPersistence
     public GameObject floatingTextBox;
     public TMP_Text itemText;
     public TMP_Text itemCostText;
-    private GameController playerCoins;
+    private CoinTextController playerCoins;
     private bool collected = false;
 
     private void Start(){
@@ -23,7 +23,7 @@ public class PurchasableItem : MonoBehaviour, IDataPersistence
             floatingTextBox.SetActive(false);
             itemText.text = itemDescription;
             itemCostText.text = $"Cost: {cost} coins";
-            playerCoins = FindFirstObjectByType<GameController>();
+            playerCoins = FindFirstObjectByType<CoinTextController>();
         }else{
             Destroy(gameObject);
         }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ae635f5ea41724f5da56b85e0b358be5
+guid: 4500fa3b5d063e24fb10ede086eed107
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3737897332693287829
-    second: Bar_0
+      213: -5304877211138737426
+    second: Move Animation_v3_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bar_0
+      name: Move Animation_v3_01_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 29
         y: 0
-        width: 52
-        height: 9
+        width: 46
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5934012e1ddafd330800000000000000
-      internalID: 3737897332693287829
+      spriteID: eeab20d684a4166b0800000000000000
+      internalID: -5304877211138737426
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Bar_0: 3737897332693287829
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
