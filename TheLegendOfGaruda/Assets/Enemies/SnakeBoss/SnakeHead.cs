@@ -28,6 +28,7 @@ public class SnakeHead : MonoBehaviour, IDamageable
         {
             transform.GetComponentInParent<IStunnable>().Stun(2);
         }else if(other.collider.CompareTag("Orb")){
+            Debug.Log("Orb absorbed");
             other.collider.GetComponent<ProtectionOrb>().Absorb();
             transform.GetComponentInParent<SnakeManager>().AddBodyParts();
         }
