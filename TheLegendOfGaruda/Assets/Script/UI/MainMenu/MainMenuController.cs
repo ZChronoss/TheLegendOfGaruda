@@ -26,7 +26,7 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
 
         // load scene game nya
         // bakal save game karena OnSceneUnloaded di DataPersistenceManager
-        SceneManager.LoadSceneAsync("GarudaTutorialScene"); // <- sesuain sama level pertama
+        SceneManager.LoadSceneAsync("IntroductionScene"); // <- sesuain sama level pertama
     }
 
     public void OnContinueClick()
