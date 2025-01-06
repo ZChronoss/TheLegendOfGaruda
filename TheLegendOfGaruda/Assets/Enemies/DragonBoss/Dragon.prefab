@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d572ccb8f39cee43a13fd5c8a1c832e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   dragonBreathCooldown: 10
   dragonBreathDuration: 4
 --- !u!114 &-8264115748340268301
@@ -210,10 +209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7055bbe881ff23a4fb23440ee90e1f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5284616959910701335, guid: eeb89110e5f13fb4483c9e188029c977, type: 3}
+  bullet: {fileID: 8987426260920809440, guid: 5d1b3dacf6b2ed24eb21710f036181c7, type: 3}
   bulletPos: {fileID: 5625809443383551969}
   shootingDisabled: 0
-  shootingCooldown: 0.1
+  shootingCooldown: 1
 --- !u!114 &5948149941127831799
 MonoBehaviour:
   m_ObjectHideFlags: 0
