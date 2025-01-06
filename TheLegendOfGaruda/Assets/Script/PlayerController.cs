@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         private set
         {
             _isMoving = value;
-            //animator.SetBool(AnimationStrings.isMoving, value);
+            animator.SetBool(AnimationString.isMoving, value);
         }
     }
 
