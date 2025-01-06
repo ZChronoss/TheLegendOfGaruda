@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public float flySteer = 30f;
     public float flyDuration = 1f;
     public bool isFlying = false;
-    bool canFly = true;
+    public bool canFly = true;
 
     Vector2 moveInput;
 
