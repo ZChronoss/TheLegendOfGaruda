@@ -488,6 +488,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &148100974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9198875780251556624, guid: 60f3d5d4bedebc245af7263e23529bf2, type: 3}
+  m_PrefabInstance: {fileID: 578863862}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd06ad3653d341458bd64b2917c2d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &268740125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1051,8 +1062,8 @@ RectTransform:
   m_Children:
   - {fileID: 1901954803}
   - {fileID: 360783752}
-  - {fileID: 1270288883}
   - {fileID: 5542445473092158017}
+  - {fileID: 1270288883}
   - {fileID: 678157523}
   - {fileID: 15771354}
   - {fileID: 281236126}
@@ -4063,6 +4074,7 @@ GameObject:
   - component: {fileID: 1559370285}
   - component: {fileID: 1559370287}
   - component: {fileID: 1559370288}
+  - component: {fileID: 1559370289}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -4127,6 +4139,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyButton: {fileID: 1270288882}
   touchingDirections: {fileID: 1157546582}
+--- !u!114 &1559370289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559370284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae248a5a52f684041974a249059834bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restButton: {fileID: 6987307775131837274}
+  bonfire: {fileID: 148100974}
 --- !u!1 &1696369703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,7 +5260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Gamepad>/rightShoulder
+  m_ControlPath: <Gamepad>/buttonNorth
 --- !u!1001 &6684136252837217989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5341,7 +5367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &7229415926358779766
 PrefabInstance:
   m_ObjectHideFlags: 0
