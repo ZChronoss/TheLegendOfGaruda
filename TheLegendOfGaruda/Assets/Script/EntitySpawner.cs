@@ -49,7 +49,15 @@ public class EntitySpawner : MonoBehaviour
         // Mark the spawn point as occupied
         isOccupied[randomIndex] = true;
 
+
         // Instantiate the enemy at the chosen spawn point
-        GameObject enemy = Instantiate(entityPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+        GameObject entity = Instantiate(entityPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+        ProtectionOrb protectionOrb = entity.GetComponent<ProtectionOrb>();
+        if (protectionOrb != null)
+        {
+
+            // Unmark the spawn point as occupied when the enemy dies
+            protectionOrb.OnEntityDestroyed += () => isOccupied[randomIndex] = false;
+        }
     }
 }

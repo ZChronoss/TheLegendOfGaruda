@@ -53,13 +53,13 @@ public class DragonSpawn : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
 
         // Get the EnemyHealth component and register it with the boss
-        // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-        // if (enemyHealth != null)
-        // {
-        //     // bossDragon.RegisterEnemy(enemyHealth);
+        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            bossDragon.RegisterEnemy(enemyHealth);
 
-        //     // Unmark the spawn point as occupied when the enemy dies
-        //     enemyHealth.OnEntityDeath += (EnemyHealth e) => { isOccupied[randomIndex] = false; };
-        // }
+            // Unmark the spawn point as occupied when the enemy dies
+            enemyHealth.OnEntityDeath += (EnemyHealth e) => { isOccupied[randomIndex] = false; };
+        }
     }
 }

@@ -32,7 +32,6 @@ public class SnakeManager : MonoBehaviour, IStunnable
         target.Add(GameObject.FindGameObjectWithTag("Player"));
         createBodyParts();
         rb = snakeBody[0].GetComponent<Rigidbody2D>();
-        gameObject.SetActive(false);
     }
 
     void Update(){
