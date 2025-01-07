@@ -13,6 +13,9 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     private HitFlash HitFlash;
     private bool isInvincible = false;
 
+    private bool isDead = false;
+    public GameOverController gameOverController;
+
     void Awake()
     {
         //maxHealth = PlayerPrefs.GetInt("MaxHealth", 3);
@@ -23,6 +26,8 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         if(HitFlash == null){
             HitFlash = gameObject.AddComponent<HitFlash>();
         }
+
+        gameOverController = FindAnyObjectByType<GameOverController>();
     }
 
     public void IncreaseHealthPoint(int amount)
@@ -59,10 +64,15 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
             if (healthUI){
                 healthUI.UpdateHearts(health);
             }
-            if(health <= 0){
+            if(health <= 0 && !isDead){
+                isDead = true;
+                gameOverController.GameOver();
                 Destroy(gameObject);
             }
-            StartCoroutine(BecomeTemporarilyInvincible(invincibilityDuration));
+            else
+            {
+                StartCoroutine(BecomeTemporarilyInvincible(invincibilityDuration));
+            }
         }
     }
 

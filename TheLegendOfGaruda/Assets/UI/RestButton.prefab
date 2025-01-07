@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1379997354996290994
+--- !u!1 &5750887721169569014
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4556486017416688809}
-  - component: {fileID: 1893143079578581158}
-  - component: {fileID: 6845973265576422812}
-  - component: {fileID: 7506916287151040829}
-  - component: {fileID: 3434192713671463031}
+  - component: {fileID: 4363011289510433298}
+  - component: {fileID: 8916003818855021006}
+  - component: {fileID: 3316937423104094098}
+  - component: {fileID: 3884316993661681026}
+  - component: {fileID: 2727103290873908200}
   m_Layer: 5
-  m_Name: FlyButton
+  m_Name: RestButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!224 &4556486017416688809
+--- !u!224 &4363011289510433298
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379997354996290994}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 5750887721169569014}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39,21 +39,21 @@ RectTransform:
   m_AnchoredPosition: {x: 594, y: 8.6}
   m_SizeDelta: {x: 141.01001, y: 141.01001}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1893143079578581158
+--- !u!222 &8916003818855021006
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379997354996290994}
+  m_GameObject: {fileID: 5750887721169569014}
   m_CullTransparentMesh: 1
---- !u!114 &6845973265576422812
+--- !u!114 &3316937423104094098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379997354996290994}
+  m_GameObject: {fileID: 5750887721169569014}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 96a1e4948bedc2940983e563e1be53d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58f31d154bf6b7b4188b9bc473d83a64, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,31 +77,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7506916287151040829
+--- !u!114 &3884316993661681026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379997354996290994}
+  m_GameObject: {fileID: 5750887721169569014}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f4f3f9dbbaed41de8a8dbf802581e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6845973265576422812}
-  idle: {fileID: 21300000, guid: 96a1e4948bedc2940983e563e1be53d9, type: 3}
-  pressed: {fileID: 21300000, guid: ed2ee088e4c8448409a742c29c2a4109, type: 3}
---- !u!114 &3434192713671463031
+  buttonImage: {fileID: 3316937423104094098}
+  idle: {fileID: 21300000, guid: 58f31d154bf6b7b4188b9bc473d83a64, type: 3}
+  pressed: {fileID: 21300000, guid: e4e656b54d038c648b7d0dd9211309f8, type: 3}
+--- !u!114 &2727103290873908200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379997354996290994}
+  m_GameObject: {fileID: 5750887721169569014}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControlPath: <Gamepad>/rightShoulder
+  m_ControlPath: <Gamepad>/buttonNorth
