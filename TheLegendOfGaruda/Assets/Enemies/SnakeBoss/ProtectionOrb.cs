@@ -7,6 +7,8 @@ public class ProtectionOrb : MonoBehaviour, IItem
     public int amount = 5;
     private GameObject snake;
     private GameObject player;
+    public delegate void EntityDestroyHandler();
+    public event EntityDestroyHandler OnEntityDestroyed;
     public void Awake(){
         snake = GameObject.FindGameObjectWithTag("SnakeBoss");
         player = GameObject.FindGameObjectWithTag("Player");
@@ -27,10 +29,12 @@ public class ProtectionOrb : MonoBehaviour, IItem
             player.GetComponent<ProtectionBarrierManager>().HandleOrbCollected();
         }
         Destroy(gameObject);
+        OnEntityDestroyed.Invoke();
     }
 
     public void Absorb(){
         snake.GetComponent<SnakeManager>().target.Remove(gameObject);
         Destroy(gameObject);
+        OnEntityDestroyed.Invoke();
     }
 }

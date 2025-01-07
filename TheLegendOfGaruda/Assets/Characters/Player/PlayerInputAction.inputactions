@@ -171,6 +171,17 @@
                 },
                 {
                     "name": "",
+                    "id": "998a2fa1-91bd-43e0-8cc8-7d1a07a4b893",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d22b062a-b6df-4354-b71b-99520fbe3d89",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -198,6 +209,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad;Keyboard&Mouse",
+                    "action": "Fly",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52349882-e32f-4a8b-b661-45b6eaf414a8",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Fly",
                     "isComposite": false,
                     "isPartOfComposite": false

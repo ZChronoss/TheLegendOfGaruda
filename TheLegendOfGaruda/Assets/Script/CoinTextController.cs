@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class GameController : MonoBehaviour, IDataPersistence
+public class CoinTextController : MonoBehaviour, IDataPersistence
 {
     public int coinAmount;
     public TMP_Text coinText;
