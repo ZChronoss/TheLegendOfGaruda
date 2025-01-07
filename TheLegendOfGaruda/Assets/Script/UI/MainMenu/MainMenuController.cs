@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,12 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
     [Header("Menu Buttons")]
     [SerializeField] private Button startButton;
     [SerializeField] private Button continueGameButton;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource btnPressedSFX;
+
+    [Header("Fade Out Effect")]
+    [SerializeField] GameObject fadeOut;
 
     private string playerScene;
 
@@ -21,6 +28,16 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
     public void OnStartClick()
     {
         DisableMenuButtons();
+        StartCoroutine(StartBtnCoroutine());
+    }
+
+    private IEnumerator StartBtnCoroutine()
+    {
+        btnPressedSFX.Play();
+        fadeOut.SetActive(true);
+
+        yield return new WaitForSeconds(1.7f);
+
         // bikin new game
         DataPersistenceManager.instance.NewGame();
 
@@ -32,6 +49,16 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
     public void OnContinueClick()
     {
         DisableMenuButtons();
+        StartCoroutine(ContinueBtnPressed());
+        
+    }
+
+    private IEnumerator ContinueBtnPressed()
+    {
+        btnPressedSFX.Play();
+        fadeOut.SetActive(true);
+
+        yield return new WaitForSeconds(1.7f);
 
         // save game sebelum load scene baru(?)(ini gw kurang paham)
         DataPersistenceManager.instance.SaveGame();
