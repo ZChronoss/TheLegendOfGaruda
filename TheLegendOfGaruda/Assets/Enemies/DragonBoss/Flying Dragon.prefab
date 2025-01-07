@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
-  maxHealth: 5
+  maxHealth: 3
   lootTable: []
 --- !u!114 &6307010791550623321
 MonoBehaviour:
