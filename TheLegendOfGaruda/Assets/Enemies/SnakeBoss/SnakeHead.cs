@@ -39,10 +39,6 @@ public class SnakeHead : MonoBehaviour, IDamageable
         FindAnyObjectByType<HitStop>().Stop(0.03f);
         transform.GetComponentInParent<SnakeManager>().health -= damage*10;
         float health = transform.GetComponentInParent<SnakeManager>().health;
-        if (HealthBar == null)
-{
-    Debug.LogError("HealthBar is null!");
-}
         HealthBar.SetHealth(health);
         if (transform.GetComponentInParent<SnakeManager>().health <= 0){
             Destroy(transform.parent.gameObject);

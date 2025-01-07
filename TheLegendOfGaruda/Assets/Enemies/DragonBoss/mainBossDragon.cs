@@ -6,6 +6,7 @@ public class mainBossDragon : MonoBehaviour
     [SerializeField] private float maxHealth = 3f;
 
     private float currentHealth;
+    public BossHealthUI healthBar;
 
     // List to track spawned enemies
     private List<GameObject> spawnedEnemies = new List<GameObject>();
@@ -13,15 +14,16 @@ public class mainBossDragon : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void RegisterEnemy(EnemyHealth enemy)
     {
         // Add the enemy's GameObject to the list of spawned enemies
-        // spawnedEnemies.Add(enemy.gameObject);
+        spawnedEnemies.Add(enemy.gameObject);
 
         // Subscribe to the enemy's death event
-        // enemy.OnEntityDeath += OnEntityDied;
+        enemy.OnEntityDeath += OnEntityDied;
     }
 
     private void OnEntityDied(EnemyHealth enemy)
@@ -39,6 +41,7 @@ public class mainBossDragon : MonoBehaviour
     public void Damage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {

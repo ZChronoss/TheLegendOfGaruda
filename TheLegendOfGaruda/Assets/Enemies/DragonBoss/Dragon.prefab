@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 3
   jumpForce: 2
-  aggroAreaSize: 10
+  aggroAreaSize: 100
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
