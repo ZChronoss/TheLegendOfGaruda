@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Move Animation_v3_03_0: -3057797975438936841
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
