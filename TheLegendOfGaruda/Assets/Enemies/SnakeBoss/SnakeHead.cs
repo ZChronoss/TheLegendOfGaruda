@@ -34,18 +34,26 @@ public class SnakeHead : MonoBehaviour, IDamageable
         }
     }
 
-    public void Damage(float damage){
+    public void Damage(float damage)
+    {
         HitFlash.TriggerFlash(0.05f);
         FindAnyObjectByType<HitStop>().Stop(0.03f);
-        transform.GetComponentInParent<SnakeManager>().health -= damage*10;
-        float health = transform.GetComponentInParent<SnakeManager>().health;
-        if (HealthBar == null)
-{
-    Debug.LogError("HealthBar is null!");
-}
-        HealthBar.SetHealth(health);
-        if (transform.GetComponentInParent<SnakeManager>().health <= 0){
-            Destroy(transform.parent.gameObject);
+
+        SnakeManager snakeManager = transform.GetComponentInParent<SnakeManager>();
+        if (snakeManager != null)
+        {
+            snakeManager.health -= damage;
+            HealthBar.SetHealth(snakeManager.health);
+
+            if (snakeManager.health <= 0)
+            {
+                if (snakeManager.timelineDirector != null)
+                {
+                    snakeManager.timelineDirector.Play();
+                }
+
+                Destroy(transform.parent.gameObject);
+            }
         }
     }
 }

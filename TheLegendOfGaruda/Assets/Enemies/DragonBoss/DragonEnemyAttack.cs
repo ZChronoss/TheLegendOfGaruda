@@ -5,7 +5,7 @@ public class DragonEnemyAttack : MonoBehaviour
     private Transform player;
     private EnemyShooting controller;
     private float timer;
-    public float dragonBreathCooldown = 10f;
+    public float dragonBreathCooldown = 2f;
     public float dragonBreathDuration = 4f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

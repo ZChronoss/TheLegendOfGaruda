@@ -12,7 +12,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     private int patrolDirection = 1; // 1 for forward, -1 for backward
     private Vector2 patrolTarget; // Current patrol target
     private bool _isFacingRight = false;
-    private bool isChasing = false;
+    public bool isChasing = false;
     private float startY; // The initial Y position for sine wave movement
 
     public bool IsFacingRight

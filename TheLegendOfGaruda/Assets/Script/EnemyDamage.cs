@@ -7,12 +7,32 @@ public class MonsterDamage : MonoBehaviour
     public int damage = 1;
     private PlayerHealth playerHealth;
     public void Start(){
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+           playerHealth = player.GetComponent<PlayerHealth>();
+           if (playerHealth == null)
+            {
+                Debug.LogError("PlayerHealth component is missing on the Player GameObject!");
+            }
+        }
+        else
+        {
+            Debug.LogError("No GameObject with the 'Player' tag found in the scene!");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Player"){
-            playerHealth.takeDamage(damage);
+            if (playerHealth != null)
+            {
+                Debug.Log("Player hit! Applying damage.");
+                playerHealth.takeDamage(damage);
+            }
+            else
+            {
+                Debug.LogError("playerHealth is null. Damage cannot be applied.");
+            }
         }
     }
 }

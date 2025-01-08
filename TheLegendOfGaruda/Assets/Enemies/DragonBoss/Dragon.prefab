@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d572ccb8f39cee43a13fd5c8a1c832e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragonBreathCooldown: 10
+  dragonBreathCooldown: 5
   dragonBreathDuration: 4
 --- !u!114 &-8264115748340268301
 MonoBehaviour:
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 3
   jumpForce: 2
-  aggroAreaSize: 10
+  aggroAreaSize: 100
   groundLayer:
     serializedVersion: 2
     m_Bits: 128

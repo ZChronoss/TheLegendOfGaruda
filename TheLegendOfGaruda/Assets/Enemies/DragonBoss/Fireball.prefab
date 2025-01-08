@@ -166,6 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 5
+  speed: 10
   accuracy: 10
-  bulletExpireTime: 2
+  bulletExpireTime: 10

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SnakeManager : MonoBehaviour, IStunnable
 {
@@ -11,6 +12,7 @@ public class SnakeManager : MonoBehaviour, IStunnable
     public float health;
     private bool fleeingState = false;
     public bool chasingState = false;
+    public PlayableDirector timelineDirector;
     [SerializeField] float rotateSpeed = 200f; 
     [SerializeField] float distanceBetween = 2f;
     [SerializeField] List<GameObject> bodyParts = new List<GameObject>();
@@ -163,7 +165,9 @@ public class SnakeManager : MonoBehaviour, IStunnable
             }
         }
 
-        if(snakeBody.Count == 0) Destroy(this);
+        if(snakeBody.Count == 0) {
+            Destroy(this);
+        } 
     }
 
     public void AddBodyParts(){

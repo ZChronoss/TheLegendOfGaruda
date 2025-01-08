@@ -196,11 +196,11 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: 6693400435787964156}
   - {fileID: -5448817868481624291}
-  m_FixedDuration: 0
+  m_FixedDuration: 5.906229496002197
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
-  m_DurationMode: 0
+  m_DurationMode: 1
   m_MarkerTrack: {fileID: 0}
 --- !u!74 &2986395841978440803
 AnimationClip:

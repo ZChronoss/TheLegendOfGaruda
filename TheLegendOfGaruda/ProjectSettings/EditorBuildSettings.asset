@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScenes/Stage1Scene.unity
     guid: 8c286e9dbcaac482d93755d369ad6a9d
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/Stage2Scene.unity
+    guid: 7aff7ca730b2a454db1d23645830f1c0
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/BossScene/FirstBossStage.unity
+    guid: 94beb621ed2844fbca7386ee0a100b52
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/Stage3Scene.unity
+    guid: 69d73317c836447d889d4924d54a9352
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/BossScene/SecondBossStage.unity
+    guid: 5945165031fc94faf939b3881ae1fe90
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a3654eb3086594c1da187bb43817fc0c, type: 2}
   m_UseUCBPForAssetBundles: 0
