@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &477181745632112779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7671658125622582055}
+  m_Layer: 0
+  m_Name: orbSpawnPoint (12)
+  m_TagString: Orb
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7671658125622582055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477181745632112779}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.8, y: -7.7, z: -2.6528907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2446220334091487127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055985814198485114
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2933181909297276777}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (6)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -40,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042545603836790382}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (1)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -72,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2446220334091487127}
   - component: {fileID: 2551445544335276018}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawner
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -104,6 +135,9 @@ Transform:
   - {fileID: 8664973667625593691}
   - {fileID: 8295084688948758424}
   - {fileID: 2021414616537332668}
+  - {fileID: 7671658125622582055}
+  - {fileID: 1017425491288755679}
+  - {fileID: 4596939807336810595}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2551445544335276018
@@ -126,6 +160,15 @@ MonoBehaviour:
   - {fileID: 695812631857013482}
   - {fileID: 6759169400755067875}
   - {fileID: 6293222294870027974}
+  - {fileID: 2933181909297276777}
+  - {fileID: 3377489792901334223}
+  - {fileID: 6210009371735496361}
+  - {fileID: 8664973667625593691}
+  - {fileID: 8295084688948758424}
+  - {fileID: 2021414616537332668}
+  - {fileID: 7671658125622582055}
+  - {fileID: 1017425491288755679}
+  - {fileID: 4596939807336810595}
   timeInterval: 5
 --- !u!1 &3135775109251995763
 GameObject:
@@ -136,7 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8295084688948758424}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (10)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -167,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8664973667625593691}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (9)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -189,6 +232,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2446220334091487127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4271863216777800892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017425491288755679}
+  m_Layer: 0
+  m_Name: orbSpawnPoint (13)
+  m_TagString: Orb
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1017425491288755679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271863216777800892}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 81.5, y: -2.5, z: -2.6528907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2446220334091487127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5012319851074320155
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2021414616537332668}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (11)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -220,6 +294,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2446220334091487127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5560845943268933025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4596939807336810595}
+  m_Layer: 0
+  m_Name: orbSpawnPoint (14)
+  m_TagString: Orb
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4596939807336810595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5560845943268933025}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.5, y: -4.7, z: -2.6528907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2446220334091487127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5912970476760425481
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6210009371735496361}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (8)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -260,7 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3377489792901334223}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (7)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -291,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6293222294870027974}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (5)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -322,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 271812610480881484}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -353,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6759169400755067875}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (4)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -384,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695812631857013482}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (3)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -415,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367972683745758927}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: orbSpawnPoint (2)
   m_TagString: Orb
   m_Icon: {fileID: 0}
