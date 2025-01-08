@@ -87,7 +87,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1624248263
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4c98967684f1052469366750c24ca55c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -405,6 +405,7 @@ MonoBehaviour:
   flySteer: 30
   flyDuration: 0.6
   isFlying: 0
+  canFly: 1
   _isMoving: 0
   _isFacingRight: 1
 --- !u!114 &3509917459315824717
@@ -464,7 +465,7 @@ MonoBehaviour:
   maxHealth: 3
   health: 0
   invincibilityDuration: 1.5
-  healthUI: {fileID: 0}
+  gameOverSFX: {fileID: 8300000, guid: 98bbb97bb2fab634b9320eed7ca16ed8, type: 3}
 --- !u!114 &273818891174533809
 MonoBehaviour:
   m_ObjectHideFlags: 0

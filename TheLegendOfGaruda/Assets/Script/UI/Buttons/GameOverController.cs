@@ -4,10 +4,12 @@ using UnityEngine.SceneManagement;
 public class GameOverController : MonoBehaviour
 {
     public GameObject gameOver;
+    private PanelFader panelFader;
 
     public void GameOver()
     {
-        gameOver.SetActive(true);
+        panelFader = GetComponent<PanelFader>();
+        panelFader.Fade();
     }
 
     public void Retry()

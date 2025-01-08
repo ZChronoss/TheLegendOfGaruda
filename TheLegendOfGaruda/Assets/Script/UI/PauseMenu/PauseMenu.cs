@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
+    //public GameObject pauseMenu;
     public InputActionAsset inputActions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pauseMenu.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -21,14 +21,14 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        gameObject.SetActive(true);
         inputActions.Disable();
         Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
+        gameObject.SetActive(false);
         inputActions.Enable();
         Time.timeScale = 1f;
     }

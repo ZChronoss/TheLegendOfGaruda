@@ -10,10 +10,13 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
     [SerializeField] private Button continueGameButton;
 
     [Header("Audio")]
-    [SerializeField] AudioSource btnPressedSFX;
+    [SerializeField] private AudioClip btnPressedSFX;
 
     [Header("Fade Out Effect")]
     [SerializeField] GameObject fadeOut;
+
+    [Header("Panel")]
+    [SerializeField] private GameObject settingsMenu;
 
     private string playerScene;
 
@@ -33,7 +36,7 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
 
     private IEnumerator StartBtnCoroutine()
     {
-        btnPressedSFX.Play();
+        SFXManager.instance.PlaySFXClip(btnPressedSFX, transform, 1f);
         fadeOut.SetActive(true);
 
         yield return new WaitForSeconds(1.7f);
@@ -55,7 +58,7 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
 
     private IEnumerator ContinueBtnPressed()
     {
-        btnPressedSFX.Play();
+        SFXManager.instance.PlaySFXClip(btnPressedSFX, transform, 1f);
         fadeOut.SetActive(true);
 
         yield return new WaitForSeconds(1.7f);
@@ -66,6 +69,16 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
         // load game yang ada di gamedata
         // bakal load game karena OnSceneLoaded di DataPersistenceManager
         SceneManager.LoadSceneAsync(playerScene); // <- harus di test, belom coba
+    }
+
+    public void OnSettingsClick()
+    {
+        settingsMenu.SetActive(true);
+    }
+
+    public void OnSettingsBackClick()
+    {
+        settingsMenu.SetActive(false);
     }
 
     // Disable button biar gabisa dipencet2 lagi pas lagi load scene
