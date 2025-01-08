@@ -1312,6 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 164c83e9aa6d97d49b9471ca72e22f4d, type: 3}
+  buttonPressedSFX: {fileID: 8300000, guid: 0b6d77d1e3e638145a6f6918f4ab1dfc, type: 3}
 --- !u!1 &4502978529491190306
 GameObject:
   m_ObjectHideFlags: 0
