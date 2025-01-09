@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 273818891174533809}
   - component: {fileID: 5576762472066858855}
   - component: {fileID: 7144841703007008552}
+  - component: {fileID: 8079921685415733649}
   - component: {fileID: 1962419971413493604}
   m_Layer: 8
   m_Name: Player
@@ -507,6 +508,7 @@ MonoBehaviour:
   dashSpeed: 50
   dashDamage: 1
   dashCooldown: 1
+  enemyAttackedSFX: {fileID: 8300000, guid: c44eb39e5b18fbc469084b5e96eb3367, type: 3}
 --- !u!96 &7144841703007008552
 TrailRenderer:
   serializedVersion: 3
@@ -614,6 +616,29 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8079921685415733649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165170915980542636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae289dbca6cccc74f85df2dfacc622ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSFX:
+  - {fileID: 8300000, guid: c5a07142af60e894da567343428ea09a, type: 3}
+  - {fileID: 8300000, guid: b79e5107911f7b6448676cbe9a52d071, type: 3}
+  - {fileID: 8300000, guid: 5f215df8ca8167c4989749c34b402ba6, type: 3}
+  healSFX: {fileID: 8300000, guid: fcb59b1c76da13543adb56b40f6ba4bb, type: 3}
+  dashSFX: {fileID: 8300000, guid: 1e0add217062d424a86c1c2ded251765, type: 3}
+  wingFlapSFX: {fileID: 0}
+  flySFX: {fileID: 0}
+  grassFX: []
+  rockFX: []
+  woodFX: []
 --- !u!95 &1962419971413493604
 Animator:
   serializedVersion: 7

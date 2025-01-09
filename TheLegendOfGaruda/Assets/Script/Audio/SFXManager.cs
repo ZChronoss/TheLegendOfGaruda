@@ -15,7 +15,7 @@ public class SFXManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void PlaySFXClip(AudioClip clip, Transform spawnTransform, float volume)
+    public void PlaySFXClip(AudioClip clip, Transform spawnTransform, float volume, float duration = 0)
     {
         //spawn gameobject
         AudioSource audioSource = Instantiate(sfxObject, spawnTransform.position, Quaternion.identity);
@@ -33,6 +33,6 @@ public class SFXManager : MonoBehaviour
         float clipLength = audioSource.clip.length;
 
         //destroy the clip after done playing
-        Destroy(audioSource, clipLength);
+        Destroy(audioSource.gameObject, duration == 0 ? clipLength : duration);
     }
 }

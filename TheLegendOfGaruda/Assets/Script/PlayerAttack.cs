@@ -24,6 +24,9 @@ public class PlayerAttack : MonoBehaviour
     private bool isDashing = false;
     private bool canDash = true;
 
+    [Header("Enemy Attacked SFX")]
+    public AudioClip enemyAttackedSFX;
+
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -34,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context){
         if(context.started && playerController.CanMove){
-            if (playerController.isFlying)
+            if (playerController.IsFlying)
             {
                 targetEnemy = FindNearestEnemy();
                 print(targetEnemy);
@@ -65,6 +68,7 @@ public class PlayerAttack : MonoBehaviour
                             IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
 
                             if (iDamageable != null){
+                                SFXManager.instance.PlaySFXClip(enemyAttackedSFX, transform, 0.5f);
                                 iDamageable.Damage(damageAmount);
                             }
                         }
@@ -134,6 +138,8 @@ public class PlayerAttack : MonoBehaviour
         {
             transform.position = Vector2.Lerp(startPosition, targetPosition, elapsedTime / dashDuration);
             elapsedTime += Time.deltaTime;
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, targetPosition);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720f * Time.deltaTime);
             yield return null;
         }
 

@@ -72,7 +72,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
                 isDead = true;
 
                 // Play game over sfx
-                SFXManager.instance.PlaySFXClip(gameOverSFX, transform, 1f);
+                SFXManager.instance.PlaySFXClip(gameOverSFX, transform, 0.5f);
 
                 // Display game over screen
                 gameOverController.gameObject.SetActive(true);

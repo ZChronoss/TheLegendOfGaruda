@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -3858063808789860875, guid: 59b2ef64d601d0c4a9f45a58b8e4abd8, type: 2}
+    - target: {fileID: 6991885832204641909, guid: 7f06164ce8b7d49168dd55efb69ae305, type: 3}
+      propertyPath: inputActions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 164c83e9aa6d97d49b9471ca72e22f4d, type: 3}
     - target: {fileID: 8174234493991287827, guid: 7f06164ce8b7d49168dd55efb69ae305, type: 3}
       propertyPath: m_Name
       value: DialogueBox
