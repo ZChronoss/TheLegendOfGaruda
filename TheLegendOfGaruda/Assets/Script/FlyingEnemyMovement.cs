@@ -32,6 +32,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null) return;
         if (patrolPoints.Length == 0)
         {
             Debug.LogError("No patrol points assigned!");
