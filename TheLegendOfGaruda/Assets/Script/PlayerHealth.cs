@@ -9,18 +9,21 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     public float invincibilityDuration = 1.5f;
     private float invincibilityDeltaTime = 0.4f;
     private SpriteRenderer spriteRenderer;
-    public HealthUI healthUI;
+    HealthUI healthUI;
     private HitFlash HitFlash;
     private bool isInvincible = false;
 
     private bool isDead = false;
-    public GameOverController gameOverController;
+    GameOverController gameOverController;
+
+    [Header("Game Over Sound Effect")]
+    [SerializeField] private AudioClip gameOverSFX;
 
     void Awake()
     {
         //maxHealth = PlayerPrefs.GetInt("MaxHealth", 3);
         healthUI = FindAnyObjectByType<HealthUI>();
-        // MARK: Set current healthnya ada di function ResetHealth() 
+        // MARK: Set current healthnya ada di function ResetHealth()
         spriteRenderer = GetComponent<SpriteRenderer>();
         HitFlash = GetComponent<HitFlash>();
         if(HitFlash == null){
@@ -28,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         }
 
         gameOverController = FindAnyObjectByType<GameOverController>();
+        gameOverController.gameObject.SetActive(false);
     }
 
     public void IncreaseHealthPoint(int amount)
@@ -66,6 +70,12 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
             }
             if(health <= 0 && !isDead){
                 isDead = true;
+
+                // Play game over sfx
+                SFXManager.instance.PlaySFXClip(gameOverSFX, transform, 1f);
+
+                // Display game over screen
+                gameOverController.gameObject.SetActive(true);
                 gameOverController.GameOver();
                 Destroy(gameObject);
             }

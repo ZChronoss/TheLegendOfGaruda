@@ -4,37 +4,29 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
+    //public GameObject pauseMenu;
     public InputActionAsset inputActions;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        pauseMenu.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private AudioClip buttonPressedSFX;
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        SFXManager.instance.PlaySFXClip(buttonPressedSFX, transform, 1f);
+        gameObject.SetActive(true);
         inputActions.Disable();
         Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
+        SFXManager.instance.PlaySFXClip(buttonPressedSFX, transform, 1f);
+        gameObject.SetActive(false);
         inputActions.Enable();
         Time.timeScale = 1f;
     }
 
     public void BackToMainMenu()
     {
+        SFXManager.instance.PlaySFXClip(buttonPressedSFX, transform, 1f);
         Time.timeScale = 1f;
         inputActions.Enable();
         SceneManager.LoadScene("MainMenu");

@@ -5,8 +5,13 @@ using UnityEngine;
 public class CoinTextController : MonoBehaviour, IDataPersistence
 {
     public int coinAmount;
-    public TMP_Text coinText;
+    private TMP_Text coinText;
 
+
+    private void Awake()
+    {
+        coinText = GetComponent<TMP_Text>();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
