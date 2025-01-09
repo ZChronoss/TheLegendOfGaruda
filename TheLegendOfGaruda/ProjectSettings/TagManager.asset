@@ -73,5 +73,8 @@ TagManager:
   - name: UI
     uniqueID: 2077439769
     locked: 0
+  - name: DialogueBox
+    uniqueID: 2332099263
+    locked: 0
   m_RenderingLayers:
   - Default

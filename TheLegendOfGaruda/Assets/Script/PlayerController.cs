@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     bool isDashing = false;
     bool canDash = true;
     TrailRenderer trailRenderer;
+    [SerializeField] AudioClip dashFX;
 
     [Header("Gravity")]
     public float baseGravity = 2f;
@@ -42,8 +43,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public float flySpeed = 15f;
     public float flySteer = 30f;
     public float flyDuration = 1f;
-    public bool isFlying = false;
+    private bool _isFlying = false;
     public bool canFly = true;
+    [SerializeField] AudioClip wingFlapFX;
+    [SerializeField] AudioClip flyFX;
 
     Vector2 moveInput;
 
@@ -109,6 +112,20 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
     }
 
+    public bool IsFlying
+    {
+        get
+        {
+            return _isFlying;
+        }
+
+        private set
+        {
+            _isFlying = value;
+            animator.SetBool(AnimationString.isFlying, value);
+        }
+    }
+
     public bool _isFacingRight = true;
 
     public bool IsFacingRight
@@ -168,7 +185,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     /// </summary>
     public void FixedUpdate()
     {
-        if (isFlying) {
+        if (_isFlying) {
             return;
         }
         Gravity();
@@ -265,14 +282,15 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         canDash = false;
         isDashing = true;
         trailRenderer.emitting = true;
+        SFXManager.instance.PlaySFXClip(dashFX, transform, 0.5f);
 
         animator.SetTrigger(AnimationString.dash);
 
         float dashDirection = IsFacingRight ? 1 : -1;
 
-        if (isFlying)
+        if (_isFlying)
         {
-            isFlying = false;
+            _isFlying = false;
         }
 
         rb.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);
@@ -303,15 +321,18 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     private IEnumerator FlyCoroutine()
     {
         canFly = false;
-        isFlying = true;
+        IsFlying = true;
         rb.gravityScale = 0;
 
         float elapsedTime = 0;
         Vector2 velocity = new Vector2((IsFacingRight ? 1 : -1) * flySpeed, 0f); // Initialize with current velocity
 
+        SFXManager.instance.PlaySFXClip(wingFlapFX, transform, 0.5f);
+        //SFXManager.instance.PlaySFXClip(flyFX, transform, 0.5f, flyDuration);
+
         while (elapsedTime < flyDuration)
         {
-            if (!isFlying)
+            if (!_isFlying)
             {
                 break;
             }
@@ -327,6 +348,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             }
             rb.linearVelocity = velocity;
 
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, rb.linearVelocity.normalized);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720f * Time.deltaTime);
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -334,7 +358,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         // End of flight
         rb.gravityScale = baseGravity;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y); // Retain vertical velocity for falling
-        isFlying = false;
+        IsFlying = false;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector2.up);
 
         yield return new WaitUntil(isGrounded);
         canFly = true;

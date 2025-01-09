@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class TouchingDirections : MonoBehaviour
@@ -9,7 +10,7 @@ public class TouchingDirections : MonoBehaviour
     CapsuleCollider2D touchingCol;
     Animator animator;
 
-    RaycastHit2D[] groundHits = new RaycastHit2D[5];
+    public RaycastHit2D[] groundHits = new RaycastHit2D[5];
     RaycastHit2D[] wallHits = new RaycastHit2D[5];
     private Vector2 wallCheckDirection => gameObject.transform.localScale.x > 0 ? Vector2.right : Vector2.left;
     

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.Playables;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -20,12 +21,18 @@ public class DialogueManager : MonoBehaviour
 
     public float typingSpeed = 0.05f;
 
+    [SerializeField] private GameObject HUD;
+    [SerializeField] private InputActionAsset inputActions;
+
     public void OpenDialogue(Message[] messages, Actor[] actors)
     {
         currentMessages = messages;
         currentActors = actors;
         activeMessage = 0;
         isActive = true;
+
+        HUD.SetActive(false);
+        inputActions.Disable();
 
         Debug.Log("Started conversation, Loaded messages: " + messages.Length);
         backgroundBox.transform.localScale = Vector3.one;
@@ -94,6 +101,8 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Conversation ended");
             backgroundBox.transform.localScale = Vector3.zero;
             isActive = false;
+            HUD.SetActive(true);
+            inputActions.Enable();
         }
     }
 
