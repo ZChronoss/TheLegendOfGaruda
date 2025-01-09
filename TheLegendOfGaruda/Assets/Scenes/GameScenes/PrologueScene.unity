@@ -2115,7 +2115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a0908ddcad648abbb8dd77b9f6f6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: 682e9d70-31c6-4279-96f3-6ee409b310b7
   trigger: {fileID: 1721629089}
 --- !u!114 &1721629089
 MonoBehaviour:
@@ -2140,7 +2140,7 @@ MonoBehaviour:
     message: "Apa-apaan itu\u2026"
     timeline: {fileID: 0}
   - actorId: 0
-    message: "Apa-apaan itu\u2026"
+    message: 
     timeline: {fileID: 1069248830}
   actors:
   - name: Garuda
@@ -6969,6 +6969,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 273818891174533809, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3165170915980542636, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7021,7 +7025,13 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7336748748338506340, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3253769365532840613, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
+    - {fileID: 273818891174533809, guid: 6bcfed013a4fff749887a74d744e112f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
