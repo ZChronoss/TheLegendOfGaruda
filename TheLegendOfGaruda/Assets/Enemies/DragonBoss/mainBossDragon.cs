@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class mainBossDragon : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 3f;
 
     private float currentHealth;
+    public PlayableDirector timelineDirector;
     public BossHealthUI healthBar;
 
     // List to track spawned enemies
@@ -45,6 +47,9 @@ public class mainBossDragon : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            if(timelineDirector != null) {
+                timelineDirector.Play();
+            }
             Die();
         }
     }

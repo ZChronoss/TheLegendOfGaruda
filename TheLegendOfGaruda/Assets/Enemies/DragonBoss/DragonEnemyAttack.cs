@@ -12,6 +12,7 @@ public class DragonEnemyAttack : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null) return;
         controller = GetComponent<EnemyShooting>();
     }
 
