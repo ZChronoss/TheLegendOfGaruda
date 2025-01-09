@@ -576,7 +576,7 @@ MonoBehaviour:
   messages:
   - actorId: 0
     message: 
-    timeline: {fileID: 0}
+    timeline: {fileID: 1903665690}
   actors:
   - name: Kadru
     sprite: {fileID: 21300000, guid: 2347c6a97d06e47039c791467979592e, type: 3}
