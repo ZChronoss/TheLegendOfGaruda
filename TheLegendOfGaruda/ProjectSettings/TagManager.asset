@@ -13,6 +13,8 @@ TagManager:
   - Spike
   - Platform
   - FloatingTextBox
+  - Stone
+  - Soil
   layers:
   - Default
   - TransparentFX
