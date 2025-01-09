@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a787320afb11d74b8dd5d06afb98efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 20
   healthBar: {fileID: 0}
 --- !u!114 &2239069203492530764
 MonoBehaviour:
@@ -73,7 +73,8 @@ MonoBehaviour:
   - {fileID: 2092546729101586569}
   - {fileID: 5749174821121919042}
   - {fileID: 2622595930521082956}
-  timeInterval: 5
+  - {fileID: 5607719587042791351}
+  timeInterval: 3
 --- !u!1 &2457945157191767850
 GameObject:
   m_ObjectHideFlags: 0
