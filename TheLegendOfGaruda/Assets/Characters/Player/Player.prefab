@@ -399,14 +399,16 @@ MonoBehaviour:
   dashSpeed: 50
   dashDuration: 0.1
   dashCooldown: 0.1
+  dashFX: {fileID: 8300000, guid: 1e0add217062d424a86c1c2ded251765, type: 3}
   baseGravity: 2
   maxFallSpeed: 50
   fallSpeedMultiplier: 2
   flySpeed: 15
   flySteer: 30
   flyDuration: 0.6
-  isFlying: 0
   canFly: 1
+  wingFlapFX: {fileID: 8300000, guid: d47855e323a3a834187a1ae8e6feb72b, type: 3}
+  flyFX: {fileID: 8300000, guid: 5682a865dc9976c49bed5da0f197f537, type: 3}
   _isMoving: 0
   _isFacingRight: 1
 --- !u!114 &3509917459315824717
@@ -633,9 +635,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b79e5107911f7b6448676cbe9a52d071, type: 3}
   - {fileID: 8300000, guid: 5f215df8ca8167c4989749c34b402ba6, type: 3}
   healSFX: {fileID: 8300000, guid: fcb59b1c76da13543adb56b40f6ba4bb, type: 3}
-  dashSFX: {fileID: 8300000, guid: 1e0add217062d424a86c1c2ded251765, type: 3}
-  wingFlapSFX: {fileID: 0}
-  flySFX: {fileID: 0}
   grassFX: []
   rockFX: []
   woodFX: []
