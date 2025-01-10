@@ -82,6 +82,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
                 // Jangan pake Destroy karena tombol retry pas game over gabisa
                 // TODO - Disable input & tambahin animasi player death
                 // Destroy(gameObject);
+                this.gameObject.SetActive(false);
             }
             else
             {
@@ -129,6 +130,9 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     {
         this.health = data.healthAmount;
         this.maxHealth = data.maxHealth;
+        this.gameObject.SetActive(true);
+        removeInvulnerable();
+        isDead = false;
 
         healthUI.SetMaxHeart(maxHealth);
         healthUI.UpdateHearts(health);

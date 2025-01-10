@@ -15,10 +15,12 @@ public class GameOverController : MonoBehaviour
     public void Retry()
     {
         DataPersistenceManager.instance.LoadGame();
+        this.gameObject.SetActive(false);
     }
 
     public void Exit()
     {
         SceneManager.LoadScene("MainMenu");
+        this.gameObject.SetActive(false);
     }
 }
