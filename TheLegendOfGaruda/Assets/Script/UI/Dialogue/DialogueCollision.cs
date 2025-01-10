@@ -31,7 +31,7 @@ public class DialogueCollision : MonoBehaviour, IDataPersistence
         data.dialogues.TryGetValue(id, out hasTriggered);
         if (hasTriggered) 
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

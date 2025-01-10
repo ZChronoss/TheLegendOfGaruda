@@ -43,7 +43,7 @@ public class PurchasableItem : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data){
         data.upgradables.TryGetValue(id, out collected);
         if(collected){
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
