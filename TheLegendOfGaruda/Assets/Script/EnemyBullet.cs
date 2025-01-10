@@ -16,6 +16,11 @@ public class EnemyBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
 
+        if(player==null)
+        {
+            return;
+        }
+
         Vector3 direction = player.transform.position - transform.position;
         float angleOffset = UnityEngine.Random.Range(-accuracy, accuracy);
         float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
