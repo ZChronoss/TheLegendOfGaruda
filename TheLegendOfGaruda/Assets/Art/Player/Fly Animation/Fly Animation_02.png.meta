@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fly Animation_02_0: -1850186279160528740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
