@@ -43,6 +43,7 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
 
         // bikin new game
         DataPersistenceManager.instance.NewGame();
+        DataPersistenceManager.instance.SaveGame();
 
         // load scene game nya
         // bakal save game karena OnSceneUnloaded di DataPersistenceManager
@@ -95,7 +96,7 @@ public class MainMenuController : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
-        data.playerScene = SceneManager.GetActiveScene().name;
+        // Debug.Log(SceneManager.GetActiveScene().name);
+        // data.playerScene = SceneManager.GetActiveScene().name;
     }
 }

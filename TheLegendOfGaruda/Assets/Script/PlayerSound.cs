@@ -65,7 +65,7 @@ public class PlayerSound : MonoBehaviour
         {
             return FSMaterial.Wood;
         }
-        else if (curGround.Equals("Rock"))
+        else if (curGround.Equals("Stone"))
         {
             return FSMaterial.Rock;
         }
