@@ -82,7 +82,7 @@ public class PlayerSound : MonoBehaviour
         {
             "Ground" => FSMaterial.Grass,
             "Platform" => FSMaterial.Wood,
-            "Rock" => FSMaterial.Rock,
+            "Stone" => FSMaterial.Rock,
             "Soil" => FSMaterial.Soil,
             _ => FSMaterial.Empty,
         };

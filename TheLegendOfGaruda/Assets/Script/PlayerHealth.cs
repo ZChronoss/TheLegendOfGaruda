@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
@@ -134,5 +135,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     {
         data.healthAmount = this.health;
         data.maxHealth = this.maxHealth;
+
+        data.playerScene = SceneManager.GetActiveScene().name;
     }
 }
