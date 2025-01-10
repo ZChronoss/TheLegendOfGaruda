@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerSound : MonoBehaviour
 {
-
     [Header("Attack")]
     public List<AudioClip> attackSFX;
 
@@ -29,143 +28,121 @@ public class PlayerSound : MonoBehaviour
     public List<AudioClip> woodLandFX;
     public List<AudioClip> soilLandFX;
 
-    TouchingDirections touchDir;
+    [Header("Fallback Clips")]
+    public AudioClip fallbackClip;
+
+    private TouchingDirections touchDir;
 
     private void Start()
     {
         touchDir = GetComponent<TouchingDirections>();
     }
 
-    enum FSMaterial
+    private enum FSMaterial
     {
         Grass, Wood, Rock, Soil, Empty
     }
 
-
     public void PlayAttackSFX()
     {
-        AudioClip clip = attackSFX[Random.Range(0, attackSFX.Count)];
-        SFXManager.instance.PlaySFXClip(clip, transform, 0.5f);
+        if (attackSFX != null && attackSFX.Count > 0)
+        {
+            AudioClip clip = attackSFX[Random.Range(0, attackSFX.Count)];
+            SFXManager.instance?.PlaySFXClip(clip, transform, 0.5f);
+        }
+        else
+        {
+            Debug.LogWarning("Attack SFX list is empty or not assigned.");
+        }
     }
 
     public void PlayHealSFX()
     {
-        SFXManager.instance.PlaySFXClip(healSFX, transform, 0.5f);
+        if (healSFX != null)
+        {
+            SFXManager.instance?.PlaySFXClip(healSFX, transform, 0.5f);
+        }
+        else
+        {
+            Debug.LogWarning("Heal SFX is not assigned.");
+        }
     }
 
     private FSMaterial SurfaceSelect()
     {
-        var curGround = touchDir.groundHits.First().transform.tag;
+        if (touchDir == null || touchDir.groundHits == null || !touchDir.groundHits.Any())
+        {
+            Debug.LogWarning("No ground detected. Defaulting to Empty.");
+            return FSMaterial.Empty;
+        }
 
-        if (curGround.Equals("Ground"))
+        var curGround = touchDir.groundHits.First().transform?.tag;
+
+        return curGround switch
         {
-            return FSMaterial.Grass;
+            "Ground" => FSMaterial.Grass,
+            "Platform" => FSMaterial.Wood,
+            "Rock" => FSMaterial.Rock,
+            "Soil" => FSMaterial.Soil,
+            _ => FSMaterial.Empty,
+        };
+    }
+
+    private void PlaySound(FSMaterial surface, List<AudioClip> grassFX, List<AudioClip> woodFX, List<AudioClip> rockFX, List<AudioClip> soilFX)
+    {
+        AudioClip clip = null;
+
+        switch (surface)
+        {
+            case FSMaterial.Grass:
+                if (grassFX != null && grassFX.Count > 0)
+                    clip = grassFX[Random.Range(0, grassFX.Count)];
+                break;
+            case FSMaterial.Wood:
+                if (woodFX != null && woodFX.Count > 0)
+                    clip = woodFX[Random.Range(0, woodFX.Count)];
+                break;
+            case FSMaterial.Rock:
+                if (rockFX != null && rockFX.Count > 0)
+                    clip = rockFX[Random.Range(0, rockFX.Count)];
+                break;
+            case FSMaterial.Soil:
+                if (soilFX != null && soilFX.Count > 0)
+                    clip = soilFX[Random.Range(0, soilFX.Count)];
+                break;
         }
-        else if (curGround.Equals("Platform"))
+
+        if (clip == null && fallbackClip != null)
         {
-            return FSMaterial.Wood;
+            clip = fallbackClip;
+            Debug.LogWarning($"Using fallback clip for surface: {surface}");
         }
-        else if (curGround.Equals("Rock"))
+
+        if (clip != null && SFXManager.instance != null)
         {
-            return FSMaterial.Rock;
-        }
-        else if (curGround.Equals("Soil"))
-        {
-            return FSMaterial.Soil;
+            SFXManager.instance.PlaySFXClip(clip, transform, 1f);
         }
         else
         {
-            return FSMaterial.Empty;
+            Debug.LogWarning($"No valid clip found or SFXManager instance is null for surface: {surface}");
         }
     }
 
     public void PlayFootstep()
     {
-        AudioClip clip = null;
-
         FSMaterial surface = SurfaceSelect();
-
-        switch (surface)
-        {
-            case FSMaterial.Grass:
-                clip = grassFootstepsFX[Random.Range(0, grassFootstepsFX.Count)]; 
-                break;
-            case FSMaterial.Wood:
-                clip = woodFootstepsFX[Random.Range(0, woodFootstepsFX.Count)];
-                break;
-            case FSMaterial.Rock:
-                clip = rockFootstepsFX[Random.Range(0, rockFootstepsFX.Count)];
-                break;
-            case FSMaterial.Soil:
-                clip = soilFootstepsFX[Random.Range(0, soilFootstepsFX.Count)];
-                break;
-            default:
-                break;
-        }
-
-        if(surface != FSMaterial.Empty)
-        {
-            SFXManager.instance.PlaySFXClip(clip, transform, 1f);
-        }
+        PlaySound(surface, grassFootstepsFX, woodFootstepsFX, rockFootstepsFX, soilFootstepsFX);
     }
 
     public void PlayJump()
     {
-        AudioClip clip = null;
-
         FSMaterial surface = SurfaceSelect();
-
-        switch (surface)
-        {
-            case FSMaterial.Grass:
-                clip = grassJumpFX[Random.Range(0, grassJumpFX.Count)];
-                break;
-            case FSMaterial.Wood:
-                clip = woodJumpFX[Random.Range(0, woodJumpFX.Count)];
-                break;
-            case FSMaterial.Rock:
-                clip = rockJumpFX[Random.Range(0, rockJumpFX.Count)];
-                break;
-            case FSMaterial.Soil:
-                clip = soilJumpFX[Random.Range(0, soilJumpFX.Count)];
-                break;
-            default:
-                break;
-        }
-
-        if (surface != FSMaterial.Empty)
-        {
-            SFXManager.instance.PlaySFXClip(clip, transform, 1f);
-        }
+        PlaySound(surface, grassJumpFX, woodJumpFX, rockJumpFX, soilJumpFX);
     }
 
     public void PlayLand()
     {
-        AudioClip clip = null;
-
         FSMaterial surface = SurfaceSelect();
-
-        switch (surface)
-        {
-            case FSMaterial.Grass:
-                clip = grassLandFX[Random.Range(0, grassLandFX.Count)];
-                break;
-            case FSMaterial.Wood:
-                clip = woodLandFX[Random.Range(0, woodLandFX.Count)];
-                break;
-            case FSMaterial.Rock:
-                clip = rockLandFX[Random.Range(0, rockLandFX.Count)];
-                break;
-            case FSMaterial.Soil:
-                clip = soilLandFX[Random.Range(0, soilLandFX.Count)];
-                break;
-            default:
-                break;
-        }
-
-        if (surface != FSMaterial.Empty)
-        {
-            SFXManager.instance.PlaySFXClip(clip, transform, 1f);
-        }
+        PlaySound(surface, grassLandFX, woodLandFX, rockLandFX, soilLandFX);
     }
 }
