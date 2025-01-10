@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -78,7 +79,9 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
                 // Display game over screen
                 gameOverController.gameObject.SetActive(true);
                 gameOverController.GameOver();
-                Destroy(gameObject);
+                // Jangan pake Destroy karena tombol retry pas game over gabisa
+                // TODO - Disable input & tambahin animasi player death
+                // Destroy(gameObject);
             }
             else
             {
