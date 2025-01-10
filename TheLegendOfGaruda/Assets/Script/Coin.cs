@@ -27,7 +27,7 @@ public class Coin : MonoBehaviour, IItem, IDataPersistence
         data.collectibles.TryGetValue(id, out collected);
         if (collected) 
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
