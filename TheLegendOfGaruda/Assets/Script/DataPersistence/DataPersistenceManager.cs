@@ -30,7 +30,7 @@ public class DataPersistenceManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         // Application.dataPath bakal ngasih direktori app sesuai sama OS yang dipake user
-        this.dataHandler = new FileDataHandler(Application.dataPath, fileName);
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
     // Ini scene manager subscribe ke OnSceneLoaded biar jalan
