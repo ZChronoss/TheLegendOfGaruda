@@ -42,7 +42,7 @@ public class SnakeHead : MonoBehaviour, IDamageable
         SnakeManager snakeManager = transform.GetComponentInParent<SnakeManager>();
         if (snakeManager != null)
         {
-            snakeManager.health -= damage;
+            snakeManager.health -= damage*10;
             HealthBar.SetHealth(snakeManager.health);
 
             if (snakeManager.health <= 0)
