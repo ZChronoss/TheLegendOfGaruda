@@ -17,9 +17,11 @@ public class Coin : MonoBehaviour, IItem, IDataPersistence
 
     public void Collect()
     {
+        if (collected) return;
+        
+        collected = true;
         OnCoinCollect.Invoke(amount);
         Destroy(gameObject);
-        collected = true;
     }
 
     public void LoadData(GameData data)
