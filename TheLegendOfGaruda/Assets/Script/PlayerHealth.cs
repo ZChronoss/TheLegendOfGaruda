@@ -82,13 +82,19 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
                 // Jangan pake Destroy karena tombol retry pas game over gabisa
                 // TODO - Disable input & tambahin animasi player death
                 // Destroy(gameObject);
-                this.gameObject.SetActive(false);
+                StartCoroutine(HandlePlayerDeath());
             }
             else
             {
                 StartCoroutine(BecomeTemporarilyInvincible(invincibilityDuration));
             }
         }
+    }
+
+    private IEnumerator HandlePlayerDeath()
+    {
+        yield return new WaitForSeconds(0.1f);
+        this.gameObject.SetActive(false);
     }
 
     public IEnumerator BecomeTemporarilyInvincible(float invincibilityDuration)
